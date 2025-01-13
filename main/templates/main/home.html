@@ -1,0 +1,297 @@
+{% extends 'main/global_layout.html' %}
+{% load static %}
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+    <script src="{% static 'main/js/collapsible.js' %}"></script>
+
+    <style>
+        #hero {
+            background: var(--main-bg-color);
+            background-image: url('{% static "main/img/main_decor.svg" %}');
+            background-size: 53%;
+            background-position: 480px -40px;
+            background-repeat: no-repeat;
+        }
+    </style>
+
+    <style>
+        #about {
+            background-image: url('{% static "main/img/about-head.svg" %}');
+            background-size: 16%;
+            background-position: 110px 45px;
+            background-repeat: no-repeat;
+        }
+    </style>
+
+    <style>
+        #mentor {
+            background-image: url('{% static "main/img/about-head.svg" %}');
+            background-size: 50%;
+            background-position: 70px 220px;
+            background-repeat: no-repeat;
+            z-index: 1;
+        }
+    </style>
+
+    <style>
+        #features {
+            background: #f4f9ff;
+            min-height: 340px;
+            background-repeat: no-repeat;
+            background-image: url('{% static "main/img/text-head-decor.svg" %}');
+            background-size: 15%;
+            background-position: 100px 112px;
+            z-index: 2;
+        }
+    </style>
+
+
+
+    <header>
+        <div class="head-info">
+            <div class="left-info">
+                <ul>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link">О курсе</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link">Особенности</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link">Формат обучения</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link">Перспективы Python</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="right-info">
+                <button type="submit" class="button-start small">Начать обучение</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="content_block" id="hero">
+        <div class="content_info_hero">
+            <p1 style="line-height: 16px;">КУРСЫ PYTHON ОНЛАЙН</p1>
+            <h1>Здесь ты станешь программистом</h1>
+            <p style="line-height: 15px;" align="justify">Ты научишься программировать. Не важно, сколько тебе лет и какой у тебя багаж знаний. Программирование, как и езда на велосипеде
+                — это навык: поэтому важна практика. Считай, что курсы Python разработки от PythonBoom — это твой “велотренажер”. Тренируйся писать код на Python онлайн: в своем темпе,
+                с практикой с первых уроков. Кодить — не страшно! Просто начни.</p>
+            <button type="submit" class="button-start large">Я в деле - начнем!</button>
+        </div>
+        <div class="content_info_img">
+            <img src="{% static 'main/img/png/hero_main.png' %}" class="img-responsive" alt="Пример" style="max-width: 80%; height: auto;">
+        </div>
+    </div>
+
+
+    <img src="{% static 'main/img/block_panel.svg' %}" alt="panel">
+
+
+    <div class="badge text-bg-warning text-wrap" style="font-size: 8px; text-align: center; width: 60px; height: 15px; margin-left: 100px;">
+        О КУРСЕ
+    </div>
+
+
+    <div class="content_block" id="about" style="min-height: 300px;">
+        <div class="content_info_hero" style="padding-top: 1px; min-width: 330px;">
+            <h2 style="color: #000000;">Что ты получишь на курсах по PythonBoom?</h2>
+            <h3>Тебя ждет увлекательный опыт обучения программированию</h3>
+            <p style="color: #000000; font-size: 9px; padding-bottom: 10px; padding-right: 30px; line-height: 15px;">PythonBoom— это не просто курсы по Python, это система. Ты проходишь курс, а система изучает твои успехи и слабые стороны и подстраивается под тебя.
+                Ты изучаешь основы Python онлайн и тут же закрепляешь новые знания на практике. С первых уроков ты получаешь заряд мотивации, чтобы достичь цели:
+                стать профессиональным разработчиком.</p>
+
+        </div>
+        <div class="block_step_img">
+            <img src="{% static 'main/img/step-start_1.svg' %}" alt="">
+            <img src="{% static 'main/img/step-learn_2.svg' %}" alt="">
+            <img src="{% static 'main/img/step-practice_3.svg' %}" alt="">
+        </div>
+        <div class="block_start">
+            <h2>Начало</h2>
+            <p>Зарегистрируйся, чтобы получить доступ к курсу по Python, настроенному под твои предпочтения к формату занятий</p>
+            <h2>Обучение</h2>
+            <p>Читай мини-лекции по программированию на Python: учить новую теорию порциями гораздо легче</p>
+            <h2>Практика</h2>
+            <p>Решай задачи и сразу получай результат — здесь онлайн-обучение Python основано на усиленной практике</p>
+        </div>
+    </div>
+
+
+    <div class="block_features" id="features">
+
+        <div class="badge text-bg-warning text-wrap" style="font-size: 8px; text-align: center; width: 80px; height: 15px; margin-left: 100px; margin-top: 40px;">
+        ОСОБЕННОСТИ
+        </div>
+
+        <h2 style="font-weight: bold; font-size: 20px; padding: 20px 300px 20px 100px;">Как курсы программирования на Python помогут тебе стать разработчиком?</h2>
+        <div class="content_block" style="min-height: 340px;">
+            <div>
+
+                <div class="collapsible">
+                    <div class="collapsible-header">Пиши код в профессиональной среде разработки</div>
+                    <div class="collapsible-content">
+                        <p>Чтобы научиться программировать на Python, обучение должно по максимуму состоять из работы с кодом. Для кодинговой практики на наших курсах программирования на Python
+                            ты будешь использовать удобный плагин.</p>
+                    </div>
+                </div>
+
+                <div class="collapsible">
+                    <div class="collapsible-header">Получай мотивацию, чтобы пройти курс по Python и достичь цели</div>
+                    <div class="collapsible-content">
+                        <p>Твои занятия будут интересными и продуктивными благодаря тому, что на курсе используются визуализация, а также ряд мотивационных фич.</p>
+                    </div>
+                </div>
+
+                <div class="collapsible">
+                    <div class="collapsible-header">Учись в своем темпе: интенсивно или по свободному графику</div>
+                    <div class="collapsible-content">
+                        <p>Ты можешь выбрать обучение со свободным графиком. Уделяй время обучению, не теряя баланс.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <img src="{% static 'main/img/block_panel.svg' %}" alt="panel" style="transform: rotate(180deg);">
+    </div>
+
+
+
+    <div style="background: var(--main-bg-color); display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100px;">
+        <div class="badge text-bg-warning text-wrap" style="font-size: 8px; text-align: center; width: 100px; height: 15px; margin-top: 15px;">
+        ФОРМАТ ОБУЧЕНИЯ
+        </div>
+        <h3 style="text-align: center; max-width: 350px; margin: 15px 0px 40px 0px; color: #fff; font-size: 22px; font-weight: bold;">
+            Выбери удобный для тебя формат обучения
+        </h3>
+    </div>
+
+
+    <div class="training-card">
+        <div class="training-format-card">
+            <h3>Самостоятельное обучение</h3>
+            <div class="content_block_row">
+                <div class="img_row"><img src="{% static 'main/img/numbers-time.svg' %}" alt=""></div>
+                <div><p>Java курсы со свободным графиком обучения: с лекциями (текстовыми, видео) и задачами по написанию кода — от простых программ до серьезных проектов для портфолио</p></div>
+            </div>
+            <div class="content_block_row">
+                <div class="img_row"><img src="{% static 'main/img/numbers-tasks.svg' %}" alt=""></div>
+                <div><p>Мгновенная проверка твоих решений</p></div>
+            </div>
+            <div class="content_block_row">
+                <div class="img_row"><img src="{% static 'main/img/numbers-help.svg' %}" alt=""></div>
+                <div><p>Умные подсказки по решению задач и улучшению стиля кода</p></div>
+            </div>
+            <div class="content_block_row">
+                <div class="img_row"><img src="{% static 'main/img/numbers-training.svg' %}" alt=""></div>
+                <div><p>Работа с профессиональными инструментами программиста с первых занятий</p></div>
+            </div>
+            <div class="content_block_row">
+                <div class="img_row"><img src="{% static 'main/img/numbers-forum.svg' %}" alt=""></div>
+                <div><p>Поддержка сообщества и команды разработчиков курса: разделы “Помощь”, “Чат” и “Форум”</p></div>
+            </div>
+            <div class="content_block_row">
+                <div class="img_row"><img src="{% static 'main/img/numbers-doc.svg' %}" alt=""></div>
+                <div><p>Обучение с нуля на Java-разработчика: опыт работы с технологиями, которые нужны для резюме программиста</p></div>
+            </div>
+            <div class="content_block_row">
+                <div class="img_row"><img src="{% static 'main/img/numbers-achivment.svg' %}" alt=""></div>
+                <div><p>Ачивки за успешное обучение на курсе и рейтинги пользователей для поддержания твоей мотивации</p></div>
+            </div>
+        </div>
+        <div class="training-format-card" id="mentor" style="display: grid;">
+            <h3>Групповое обучение с ментором</h3>
+            <h4 style="text-align: center; vertical-align: middle; line-height: 290px; ">IN PROGRESS</h4>
+        </div>
+    </div>
+
+    <img src="{% static 'main/img/block_panel.svg' %}" alt="panel">
+
+    <div class="content_block">
+
+        <div style="max-width: 300px; max-height: 600px;">
+            <div class="badge text-bg-warning text-wrap" style="font-size: 8px; text-align: center; width: 130px; height: 15px; margin-bottom: 10px;">
+            ПЕРСПЕКТИВЫ PYTHON
+            </div>
+
+            <h2 style="font-weight: bold; font-size: 20px;">3 причины, почему тебе стоит выбрать Python для обучения и старта карьеры разработчика</h2>
+            <img src="{% static 'main/img/why-pic.svg' %}" alt="" style="max-width: 75%; margin-top: 30px;">
+        </div>
+
+        <div class="why_card">
+            <div class="why_format_card" style="background: var(--main-yellow-color); margin-top: 0px;">
+                <div class="badge text-bg-dark text-wrap" style="font-size: 8px; text-align: center; width: 30px; height: 15px; margin-bottom: 5px;">01</div>
+                <h3>Простота изучения</h3>
+                <p>у Python чистый и понятный синтаксис. Этот язык идеален для новичков даже без технической базы. Простая структура кода позволяет быстрее разрабатывать
+                    и поддерживать приложения, проводить исследования, прочее.</p>
+            </div>
+            <div class="why_format_card" style="background: #00afb2">
+                <div class="badge text-bg-dark text-wrap" style="font-size: 8px; text-align: center; width: 30px; height: 15px; margin-bottom: 5px;">02</div>
+                <h3>Выход на глобальный IT‑рынок</h3>
+                <p>Спрос на Python-программистов высокий, и они могут выбирать из сотен тысяч вакансий по всему миру. Python-разработчик уровня Middle в США зарабатывает
+                    $127 тысяч в год, а Senior-специалист — от $163 тысяч.</p>
+            </div>
+
+            <div class="why_format_card" style="background: #c9b7ec">
+                <div class="badge text-bg-dark text-wrap" style="font-size: 8px; text-align: center; width: 30px; height: 15px; margin-bottom: 5px;">03</div>
+                <h3>Python — будущее разработки</h3>
+                <p>Этот язык используется в анализе данных, машинном обучении, веб-разработке, облачных проектах, DevOps и научных исследованиях. Он также востребован в разработке игр,
+                    Интернете вещей, кибербезопасности и образовании. Все технологии будущего, включая искусственный интеллект и автоматизацию, будут активно использовать Python.</p>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div style="background: var(--main-bg-color);">
+        <div class="content_block" style="min-height: 230px; padding-top: 50px;">
+            <div style="max-width: 180px;">
+                <img src="{% static 'main/img/logo_simple.svg' %}" alt="" style="max-width: 50%; margin-bottom: 10px; margin-top: -5px;">
+               <p style="font-size: 8px; color: #fff;">PythonBoom — это онлайн-курс по изучению Python-программирования c нуля с возможностью обучаться самостоятельно. В нем — большое количество задач с проверкой решения в один клик,
+                теория по основам Python  и практика работы с современными технологиями и инструментами, а также мотивационные фичи: игры, тесты, и статьи об эффективном обучении
+                и карьере Python‑разработчика.</p>
+            </div>
+
+            <div class="bottom">
+            <h3>Самообучение</h3>
+            <ul>
+                <a href="{% url 'quests' %}"><li>Курс</li></a>
+                <a href="{% url 'tasks' %}"><li>Задачи</li></a>
+                <a href="{% url 'tests' %}"><li>Тесты</li></a>
+                <a href=""><li>Игры</li></a>
+                <a href="{% url 'help' %}"><li>Помощь</li></a>
+            </ul>
+            </div>
+
+            <div class="bottom">
+            <h3>Сообщество</h3>
+            <ul>
+                <a href=""><li>Форум</li></a>
+                <a href=""><li>Статьи</li></a>
+                <a href=""><li>Отзывы</li></a>
+            </ul>
+            </div>
+
+            <div class="bottom">
+            <h3>Компания</h3>
+            <ul>
+                <a href=""><li>О нас</li></a>
+                <a href=""><li>Поддержка</li></a>
+                <a href=""><li>F.A.Q.</li></a>
+            </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div style="background: #121c24; height: 30px;">
+        <div style="padding-top: 10px; text-align: center;">
+            <p style="font-size: 6px; color: #d4d4d4;">«Программистами не рождаются» © 2025 PythonBoom</p>
+        </div>
+        <div>
+
+        </div>
+    </div>
+{% endblock %}

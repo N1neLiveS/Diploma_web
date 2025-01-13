@@ -1,0 +1,25 @@
+{% extends 'main/global_pattern.html' %}
+{% load static %}
+
+{% block title %}Здесь становятся Python-программистами{% endblock %}
+
+{% block content %}
+
+<div class="form-container">
+    <h1>Вход</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.username.label_tag }} {{ form.username }}
+        </div>
+        <div class="form-group">
+            {{ form.password.label_tag }} {{ form.password }}
+        </div>
+        <button type="submit" class="btn-submit">Войти</button>
+    </form>
+    {% if next %}
+        <p>Пожалуйста, войдите для доступа к запрашиваемой странице.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

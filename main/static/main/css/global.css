@@ -1,0 +1,89 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+aside {
+    transform: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #121c24;
+    width: 12%;
+    height: 100vh;
+    color: #fff;
+    border-right: 1px solid #FFC328;
+    overflow-y: auto;
+}
+
+aside aside_box_logo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 1px solid #666666;
+    height: 35px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.aside_box{
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #666666;
+}
+
+aside img{
+    width: 100%;
+}
+
+aside h3 {
+    margin-top: 10px;
+    font-size: 10px;
+}
+
+aside ul {
+    list-style: none;
+    padding: 0;
+}
+
+aside ul li {
+    font-size: 8px;
+    color: #a1a1a1;
+    margin-top: 8px;
+    transition: transform .6s ease;
+}
+
+aside ul li:hover, aside ul a:hover {
+    color: #FFC328;
+    text-decoration: none;
+    transform: scale(1.05);
+}
+
+aside p {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    text-align: center;
+    width: 100%;
+}
+
+aside a {
+    text-decoration: none;
+}
+
+main {
+    flex: 1;
+    margin-left: 12%; /* Отступ слева, чтобы main не заходил на aside */
+    overflow-y: auto;
+    box-sizing: border-box; /* Учитываем padding в ширине */
+}

@@ -1,0 +1,46 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'main/css/global.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <aside>
+        <aside_box_logo>
+            <a href="{% url 'home' %}"><img src="{% static 'main/img/logo_simple.svg' %}" class="img-responsive" alt="Лого"></a>
+        </aside_box_logo>
+        <div class="aside_box">
+            <h3>Обучение</h3>
+            <ul>
+                <a href="{% url 'quests' %}"><li><i class="bi bi-rocket-takeoff-fill" ></i><span style="margin-left: 8px;">Курс</span></li></a>
+                <a href="{% url 'tasks' %}"><li><i class="bi bi-terminal-fill"></i><span style="margin-left: 8px;">Задачи</span></li></a>
+                <a href="{% url 'tests' %}"><li><i class="bi bi-ui-checks-grid"></i><span style="margin-left: 8px;">Тесты</span></li></a>
+                <a href=""><li><i class="bi bi-controller"></i><span style="margin-left: 8px;">Игры</span></li></a>
+                <a href="{% url 'help' %}"><li><i class="bi bi-info-circle-fill"></i><span style="margin-left: 8px;">Помощь</span></li></a>
+            </ul>
+        </div>
+        <div class="aside_box">
+            <h3>Сообщество</h3>
+            <ul>
+                <a href=""><li><i class="bi bi-chat-text-fill"></i><span style="margin-left: 8px;">Форум</span></li></a>
+                <a href=""><li><i class="bi bi-book-fill"></i><span style="margin-left: 8px;">Статьи</span></li></a>
+                <a href=""><li><i class="bi bi-journal-text"></i><span style="margin-left: 8px;">Отзывы</span></li></a>
+            </ul>
+        </div>
+    </aside>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>
