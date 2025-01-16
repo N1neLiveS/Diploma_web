@@ -11,7 +11,7 @@ body {
     overflow: auto;
 }
 
-.head-info {
+.head_info {
     position: fixed;
     display: flex;
     justify-content: space-between;
@@ -19,19 +19,19 @@ body {
     left: 12%;
     background: var(--bg-color);
     width: 90%;
-    max-height: 35px;
-    padding: 0px 80px 0px 50px;
+    height: 35px;
+    padding: 0px 100px 0px 70px;
     color: var(--white-color);
     border-bottom: 1px solid var(--main-yellow-color);
     z-index: 2;
 }
 
 
-.left-info ul {
+.left_info ul {
     list-style-type: none;
 }
 
-.left-info li{
+.left_info li{
     font-size: 8px;
     color: #8b949e;
     font-weight: bold;
@@ -39,7 +39,7 @@ body {
     display: inline-block;
 }
 
-.left-info li:hover {
+.left_info li:hover {
     color: #d4d4d4;
 }
 
@@ -125,7 +125,7 @@ body {
     margin: 20px 0px 18px 55px;
 }
 
-.training-card {
+.training_card {
     display: grid;
     grid-template-columns: 1fr 1fr;
     min-height: 420px;
@@ -135,17 +135,17 @@ body {
     padding: 0px 100px 50px 100px;
 }
 
-.training-format-card {
+.training_format_card {
     background: white;
     border-radius: 15px;
     max-width: 300px;
-    max-height: 450px;
+    max-height: auto;
     padding: 20px;
     display: flex;
     flex-direction: column;
 }
 
-.training-format-card h3{
+.training_format_card h3{
     font-size: 14px;
     font-weight: bold;
     text-align: center;
@@ -198,6 +198,10 @@ body {
     vertical-align: middle;
 }
 
+
+
+
+
 .bottom {
     display: flex;
     flex-direction: column;
@@ -226,8 +230,6 @@ body {
     color: #fff;
     font-size: 12px;
 }
-
-
 
 
 

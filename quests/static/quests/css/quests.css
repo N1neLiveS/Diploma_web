@@ -1,0 +1,50 @@
+.quests_content {
+    min-height: 430px;
+    box-sizing: border-box;
+    width: auto;
+    background: #1f2023;
+    padding: 0px 100px;
+}
+
+.quests_nav_container {
+
+
+}
+
+.quests_card {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    min-height: 430px;
+    column-gap: 30px;
+    background: #1f2023;
+    padding-top: 60px;
+}
+
+.quests_card_format {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 15px;
+    min-width: 190px;
+    max-height: 330px;
+    padding: 20px 20px 0px 20px;
+    text-align: center
+    position: relative;
+}
+
+.quests_card_format h3 {
+    padding-top: 30px;
+    font-size: 12px;
+}
+
+.quests_card_format p {
+    font-size: 8px;
+}
+
+.bottom_element {
+    margin-top: auto;
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
