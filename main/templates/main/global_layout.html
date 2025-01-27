@@ -17,23 +17,25 @@
 </head>
 <body>
     <aside>
+
         <aside_box_logo>
             <a href="{% url 'home' %}"><img src="{% static 'main/img/logo_simple.svg' %}" class="img-responsive" alt="Лого"></a>
         </aside_box_logo>
+
         <div class="aside_box">
             <h3>Обучение</h3>
             <ul>
                 <a href="{% url 'quests' %}"><li><i class="bi bi-rocket-takeoff-fill" ></i><span style="margin-left: 8px;">Курс</span></li></a>
                 <a href="{% url 'tasks' %}"><li><i class="bi bi-terminal-fill"></i><span style="margin-left: 8px;">Задачи</span></li></a>
                 <a href="{% url 'tests' %}"><li><i class="bi bi-ui-checks-grid"></i><span style="margin-left: 8px;">Тесты</span></li></a>
-                <a href=""><li><i class="bi bi-controller"></i><span style="margin-left: 8px;">Игры</span></li></a>
+                <a href="{% url 'projects' %}"><li><i class="bi bi-controller"></i><span style="margin-left: 8px;">Проекты</span></li></a>
                 <a href="{% url 'help' %}"><li><i class="bi bi-info-circle-fill"></i><span style="margin-left: 8px;">Помощь</span></li></a>
             </ul>
         </div>
         <div class="aside_box">
             <h3>Сообщество</h3>
             <ul>
-                <a href=""><li><i class="bi bi-chat-text-fill"></i><span style="margin-left: 8px;">Форум</span></li></a>
+                <a href="{% url 'forum' %}"><li><i class="bi bi-chat-text-fill"></i><span style="margin-left: 8px;">Форум</span></li></a>
                 <a href=""><li><i class="bi bi-book-fill"></i><span style="margin-left: 8px;">Статьи</span></li></a>
                 <a href=""><li><i class="bi bi-journal-text"></i><span style="margin-left: 8px;">Отзывы</span></li></a>
             </ul>

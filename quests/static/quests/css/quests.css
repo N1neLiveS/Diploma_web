@@ -1,3 +1,4 @@
+/* ОСНОВНАЯ РАЗМЕТКА ДЛЯ БЛОКОВ */
 .quests_content {
     min-height: 430px;
     box-sizing: border-box;
@@ -6,39 +7,94 @@
     padding: 0px 100px;
 }
 
-.quests_nav_container {
-
-
+.quests_content h3 {
+    font-size: 16px;
+    color: white;
+    font-weight: bold;
+    padding: 10px 0px;
 }
+
+
+
+/* НАВИГАЦИОННАЯ ПАНЕЛЬ */
+
+.quests_nav_container {
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    align-items: center;
+    padding: 10px 0;
+    margin-top: 30px;
+    border-bottom: 1px solid #FFC328;
+}
+
+.nav-item {
+    text-decoration: none;
+    font-size: 10px;
+    margin-right: 30px;
+    color: #fff;
+    position: relative;
+}
+
+.active {
+    color: #8f8f91;
+}
+
+.active:hover {
+    color: #d4d4d4;
+}
+
+.disabled {
+    pointer-events: none;
+    color: #fff;
+}
+
+.highlight-bar {
+    height: 3px;
+    background-color: #00afb2;
+    position: absolute;
+    bottom: -2px;
+    transition: width 0.3s ease;
+}
+
+
+/* ФОРМАТ КАРТОЧЕК КВЕСТОВ */
 
 .quests_card {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     min-height: 430px;
     column-gap: 30px;
-    background: #1f2023;
-    padding-top: 60px;
+    padding-top: 40px;
 }
 
 .quests_card_format {
     display: flex;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     flex-direction: column;
-    background: white;
+    background: #2c3439;
     border-radius: 15px;
-    min-width: 190px;
+    min-width: 180px;
     max-height: 330px;
     padding: 20px 20px 0px 20px;
-    text-align: center
+    text-align: center;
     position: relative;
+}
+
+.quests_card_format:hover {
+    color: #0d1117;
+    background-color: #323d44;
 }
 
 .quests_card_format h3 {
     padding-top: 30px;
     font-size: 12px;
+    color: white;
 }
 
 .quests_card_format p {
     font-size: 8px;
+    color: white;
 }
 
 .bottom_element {
@@ -48,3 +104,78 @@
     justify-content: center;
     align-items: center;
 }
+
+
+/* ФОРМАТ КАРТОЧЕК МОДУЛЕЙ */
+
+.module_card_format {
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    max-width: 140px;
+    min-height: 120px;
+    padding: 20px 20px 0px 20px;
+    text-align: center;
+    position: relative;
+}
+
+.module_card_format img {
+    border-radius: 15px;
+    margin: -21px;
+    width: 141px;
+}
+
+.module_card_format p {
+    color: #fff;
+    font-size: 8px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+
+
+/* СКЛАДНАЯ СЕКЦИЯ МОДУЛЕЙ */
+
+.collapsible_quest {
+    background: var(--bg-color);
+    position: relative;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 10px;
+    border-top: 1px solid var(--main-yellow-color);
+}
+
+
+.content_coll {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 10px;
+    padding: 0px 10px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.content_coll p {
+    color: #fff;
+    font-size: 8px;
+    padding-top: 10px;
+}
+
+.collapsible_quest:after {
+    content: "\02795";
+    font-size: 13px;
+    color: white;
+    float: right;
+    margin-left: 5px;
+}
+
+.collapsible_quest.active:after {
+  content: '\2796';
+}
+

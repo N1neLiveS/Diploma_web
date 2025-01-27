@@ -4,16 +4,31 @@
 
 {% block content %}
 
-    <div class="quests_content">
-        <div class="quests_nav_container">
+    <script src="{% static 'quests/js/navbar.js' %}"></script>
 
+    <style>
+        #quests {
+            background: url('{% static "quests/img/bubble.svg" %}') 520px -10px no-repeat,
+                        url('{% static "quests/img/bubble.svg" %}') -160px 200px no-repeat,
+                        #1f2023;
+            background-size: 53%;
+        }
+    </style>
+
+    <div class="quests_content" id="quests">
+        <div class="quests_nav_container">
+            <a href="#" class="nav-item active">Моё обучение</a>
+            <a href="" class="nav-item disabled">Карта квестов</a>
+            <a href="{% url 'lectures' %}" class="nav-item active">Лекции</a>
+            <div class="highlight-bar"></div>
         </div>
 
         <div class="quests_card">
-            <div class="quests_card_format">
+
+            <div onclick="window.location.href='{% url 'python_basic' %}';" class="quests_card_format" style="cursor: pointer;">
                 <img src="{% static 'quests/img/1024.webp' %}" alt="" style="margin: -21px; border-radius: 15px;">
-                <h3>Python Basic. Часть 1</h3>
-                <p align="left" >Квест "Python Basic 1" усвоит даже тот, кто никогда не программировал. Вы узнаете, что такое классы, объекты, методы, переменные, типы данных, массивы, условные операторы
+                <h3 align="center">Python Basic.</h3>
+                <p align="left" >Квест "Python Basic" усвоит даже тот, кто никогда не программировал. Вы узнаете, что такое классы, объекты, методы, переменные, типы данных, массивы, условные операторы
                     и циклы. Глянете одним глазком на коллекции и ООП.</p>
                 <div class="bottom_element">
                     <div class="badge text-bg-success text-wrap" style="font-size: 8px; text-align: center; width: 70px; height: 15px;">
@@ -24,8 +39,8 @@
 
             <div class="quests_card_format">
                 <img src="{% static 'quests/img/development.svg' %}" alt="" style="margin: -21px; border-radius: 15px;">
-                <h3>Python Basic. Часть 2</h3>
-                <p align="left">Квест "Python Basic 2" рассчитан на тех, кто уже получил минимальную подготовку по Python (в рамках Квеста "Python Basic 1"). Здесь вам предстоит пройти 10 увлекательных уровней,
+                <h3 align="center">Python Basic Pro.</h3>
+                <p align="left">Квест "Python Basic Pro" рассчитан на тех, кто уже получил минимальную подготовку по Python (в рамках Квеста "Python Basic"). Здесь вам предстоит пройти 10 увлекательных уровней,
                     в которых вы изучите основы ООП, познакомитесь с потоками, сериализацией, перегрузкой методов, узнаете много нового об интерфейсах и множественном наследовании.</p>
                 <div class="bottom_element">
                     <div class="badge text-bg-danger text-wrap" style="font-size: 8px; text-align: center; width: 70px; height: 15px;">
@@ -36,9 +51,8 @@
 
             <div class="quests_card_format">
                 <img src="{% static 'quests/img/development.svg' %}" alt="" style="margin: -21px; border-radius: 15px;">
-                <h3>Python Advance.</h3>
-                <p align="left">Квест "Python Advance" рассчитан на тех, кто уже получил минимальную подготовку по Python (в рамках Квеста "Python Basic 1"). Здесь вам предстоит пройти 10 увлекательных уровней,
-                    в которых вы изучите основы ООП, познакомитесь с потоками, сериализацией, перегрузкой методов, узнаете много нового об интерфейсах и множественном наследовании.</p>
+                <h3 align="center">Python Advance.</h3>
+                <p align="left">Квест "Python Advance" рассчитан на тех, кто уже получил подготовку по Python (в рамках Квеста "Python Basic и Python Basic Pro").</p>
                 <div class="bottom_element">
                     <div class="badge text-bg-danger text-wrap" style="font-size: 8px; text-align: center; width: 70px; height: 15px;">
                         В разработке
@@ -93,9 +107,6 @@
     <div style="background: #121c24; height: 30px;">
         <div style="padding-top: 10px; text-align: center;">
             <p style="font-size: 6px; color: #d4d4d4;">«Программистами не рождаются» © 2025 PythonBoom</p>
-        </div>
-        <div>
-
         </div>
     </div>
 

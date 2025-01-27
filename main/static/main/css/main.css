@@ -7,9 +7,29 @@
     --white-color: #fff;
 }
 
+/* ОСНОВНОЕ ТЕЛО */
+
 body {
     overflow: auto;
 }
+
+
+/* ОСНОВНАЯ РАЗМЕТКА */
+
+.content_block {
+    display: flex;
+    justify-content: space-between;
+    overflow: auto;
+    min-height: 420px;
+    padding: 0px 100px;
+    box-sizing: border-box;
+    width: auto;
+    margin-top: 22px;
+}
+
+
+
+/* ГОЛОВНОЕ МЕНЮ ДЛЯ СТРАНИЦЫ */
 
 .head_info {
     position: fixed;
@@ -43,16 +63,9 @@ body {
     color: #d4d4d4;
 }
 
-.content_block {
-    display: flex;
-    justify-content: space-between;
-    overflow: auto;
-    min-height: 420px;
-    padding: 0px 100px;
-    box-sizing: border-box;
-    width: auto;
-    margin-top: 22px;
-}
+
+
+/* СТИЛИ ДЛЯ ПЕРВОГО ЭКРАНА И "О КУРСЕ" */
 
 .content_info_hero {
     flex: 1;
@@ -105,6 +118,8 @@ body {
     padding-bottom: 10px;
 }
 
+/* ПРАВАЯ ПОЛОВИНА */
+
 .block_start {
     padding-top: 20px;
 }
@@ -124,6 +139,9 @@ body {
     height: auto;
     margin: 20px 0px 18px 55px;
 }
+
+
+/* СТИЛИ ДЛЯ ЭКРАНА "ФОРМАТ ОБУЧЕНИЯ" */
 
 .training_card {
     display: grid;
@@ -151,6 +169,8 @@ body {
     text-align: center;
     padding: 20px 0px 15px 0px;
 }
+
+/* СТИЛИ ДЛЯ ЭКРАНА "ПЕРСПЕКТИВЫ PYTHON" */
 
 .why_card {
     display: flex;
@@ -200,7 +220,7 @@ body {
 
 
 
-
+/* СТИЛИ ДЛЯ НИЖНЕГО МЕНЮ */
 
 .bottom {
     display: flex;
@@ -233,7 +253,7 @@ body {
 
 
 
-
+/* СТИЛИ ДЛЯ КНОПОК */
 
 .button-start {
     appearance: none;
@@ -294,7 +314,10 @@ body {
 
 
 
+/* СТИЛИ ДЛЯ СКЛАДНОЙ СЕКЦИИ */
+
 .collapsible {
+    max-width: 680px;
     margin: 10px -5px;
     background-color: #fff;
     border-radius: 8px;
@@ -317,7 +340,8 @@ body {
 }
 
 .collapsible.open .collapsible-content {
-    display: block;
+    overflow: hidden;
+    transition: 1s ease max-height
 }
 
 .collapsible:hover,

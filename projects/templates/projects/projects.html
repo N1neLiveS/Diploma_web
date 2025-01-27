@@ -1,0 +1,66 @@
+{% extends 'main/global_layout.html' %}
+{% load static %}
+{% block title %}Курс Python - Карта квестов{% endblock %}
+
+{% block content %}
+
+    <script src="{% static 'quests/js/navbar.js' %}"></script>
+
+    <div class="quests_content">
+            <div class="quests_nav_container">
+                <a href="" class="nav-item disabled">Все проекты</a>
+                <div class="highlight-bar"></div>
+            </div>
+    </div>
+
+    <div style="background: var(--main-bg-color); margin-top: -22px;">
+        <div class="content_block" style="min-height: 230px; padding-top: 50px;">
+            <div style="max-width: 180px;">
+                <img src="{% static 'main/img/logo_simple.svg' %}" alt="" style="max-width: 50%; margin-bottom: 10px; margin-top: -5px;">
+               <p style="font-size: 8px; color: #fff;">PythonBoom — это онлайн-курс по изучению Python-программирования c нуля с возможностью обучаться самостоятельно. В нем — большое количество задач с проверкой решения в один клик,
+                теория по основам Python  и практика работы с современными технологиями и инструментами, а также мотивационные фичи: игры, тесты, и статьи об эффективном обучении
+                и карьере Python‑разработчика.</p>
+            </div>
+
+            <div class="bottom">
+            <h3>Самообучение</h3>
+            <ul>
+                <a href="{% url 'quests' %}"><li>Курс</li></a>
+                <a href="{% url 'tasks' %}"><li>Задачи</li></a>
+                <a href="{% url 'tests' %}"><li>Тесты</li></a>
+                <a href=""><li>Игры</li></a>
+                <a href="{% url 'help' %}"><li>Помощь</li></a>
+            </ul>
+            </div>
+
+            <div class="bottom">
+            <h3>Сообщество</h3>
+            <ul>
+                <a href=""><li>Форум</li></a>
+                <a href=""><li>Статьи</li></a>
+                <a href=""><li>Отзывы</li></a>
+            </ul>
+            </div>
+
+            <div class="bottom">
+            <h3>Компания</h3>
+            <ul>
+                <a href=""><li>О нас</li></a>
+                <a href=""><li>Поддержка</li></a>
+                <a href=""><li>F.A.Q.</li></a>
+            </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div style="background: #121c24; height: 30px;">
+        <div style="padding-top: 10px; text-align: center;">
+            <p style="font-size: 6px; color: #d4d4d4;">«Программистами не рождаются» © 2025 PythonBoom</p>
+        </div>
+        <div>
+
+        </div>
+    </div>
+
+{% endblock %}
