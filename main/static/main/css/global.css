@@ -87,3 +87,18 @@ main {
     overflow-y: auto;
     box-sizing: border-box; /* Учитываем padding в ширине */
 }
+
+
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-left: 100px;
+}
+
+.bottom-div {
+    align-self: stretch;
+    box-sizing: border-box;
+    width: auto;
+
+}

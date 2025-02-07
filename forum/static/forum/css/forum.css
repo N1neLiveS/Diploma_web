@@ -1,0 +1,131 @@
+.search-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0px;
+}
+
+.search-container input[type="text"] {
+    padding: 10px;
+    width: 200px;
+    height: 20px;
+    font-size: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-container button {
+    padding: 0px 15px;
+    margin-left: 10px;
+    height: 22px;
+    width: 100px;
+    font-size: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #00afb2;
+    color: white;
+    cursor: pointer;
+}
+
+.search-container button:hover {
+    background-color: #00d9d9;
+}
+
+.post {
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    min-height: 130px;
+    min-width: 130px;
+    cursor: pointer;
+}
+
+/* Стили для дочерних элементов */
+.post .user-avatar {
+    width: 15%;
+    background-color: #4b5257;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid #ccc;
+    font-size: 12px;
+    color: white;
+    transition: background-color 0.3s ease; /* Добавляем плавный переход */
+}
+
+.post .user-avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.post .post-content {
+    position: relative;
+    padding: 15px;
+    width: 85%;
+    padding-bottom: 30px;
+    background: #2c3439;
+    transition: background-color 0.3s ease; /* Добавляем плавный переход */
+}
+
+.post .post-content h2 {
+    margin: 0 0 10px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+}
+
+.post .post-content p {
+    font-size: 10px;
+    color: white;
+}
+
+.post .post-footer {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    width: 90%;
+    bottom: 10px;
+    font-size: 10px;
+    color: #666;
+}
+
+.post:hover .user-avatar {
+    background-color: #8f8f91;
+}
+
+.post:hover .post-content {
+    background-color: #323d44;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    padding: 5px 10px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+.pagination button:hover {
+    background-color: #0056b3;
+}
+
+.pagination .disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}

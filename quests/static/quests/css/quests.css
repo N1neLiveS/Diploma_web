@@ -61,8 +61,9 @@
 /* ФОРМАТ КАРТОЧЕК КВЕСТОВ */
 
 .quests_card {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     min-height: 430px;
     column-gap: 30px;
     padding-top: 40px;
@@ -74,11 +75,14 @@
     flex-direction: column;
     background: #2c3439;
     border-radius: 15px;
-    min-width: 180px;
+    min-width: 160px;
+    max-width: 185px;
     max-height: 330px;
     padding: 20px 20px 0px 20px;
+    margin-bottom: 20px;
     text-align: center;
     position: relative;
+    cursor: pointer;
 }
 
 .quests_card_format:hover {
@@ -147,7 +151,7 @@
     text-align: left;
     outline: none;
     font-size: 10px;
-    border-top: 1px solid var(--main-yellow-color);
+    border-top: 1px solid #8b949e;
 }
 
 
