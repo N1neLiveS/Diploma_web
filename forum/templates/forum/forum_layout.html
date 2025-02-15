@@ -15,27 +15,34 @@
 
         <div class="search-container">
             <input type="text" placeholder="Поиск по постам">
-            <button onclick="createPost()">Создать пост</button>
+            <button onclick="window.location.href='{% url 'create_post' %}';">Создать пост</button>
         </div>
 
 
-        <div class="post" id="posts-container">
+        <div id="posts-container">
+            {% for post in posts %}
+            <div class="post" onclick="window.location.href='{% url 'post_detail' post.id %}';">
 
-            <div class="user-avatar">
-                <img src="{% static 'forum/img/defoult_avatar.jpg' %}" alt="">
-                <p>Vladimir</p>
-            </div>
-            <div class="post-content">
-                <h2>Полезные ресурсы для тех кто в теме</h2>
-                <p>Ребята привет. Здесь я буду собирать полезные ресурсы, с моей точки зрения, которые я сам прошел или прохожу на данный момент
-                    и которые пригодятся обязательно для работы программистом. Хочу также отметить немаловажный факт, что профессионала под ключ обучить нельзя, профессионалом становятся тольк</p>
-                <div class="post-footer">
-                    <div>30.01.2025</div>
-                    <div>Просмотры: 43</div>
-                    <div>Комментарии: 0</div>
+                <div class="user-avatar">
+                    {% if post.author.profile.avatar %}
+                        <img src="{{ post.author.profile.avatar.url }}" alt="Аватар {{ post.author.username }}"> <!-- Аватар пользователя -->
+                    {% else %}
+                        <img src="{% static 'forum/img/defoult_avatar.jpg' %}" alt="Аватар по умолчанию"> <!-- Аватар по умолчанию -->
+                    {% endif %}
+                    <p>{{ post.author.username }}</p> <!-- Имя пользователя -->
                 </div>
-            </div>
+                <div class="post-content">
+                    <h2>{{ post.title }}</h2>   <!-- Заголовок поста -->
+                    <p>{{ post.content|slice:":225" }}</p> <!-- Ограничение на вывод символов в 225 -->
+                    <div class="post-footer">
+                        <div>{{ post.created_at|date:"d.m.Y H:i" }}</div>   <!-- Датта создания поста -->
+                        <div>Просмотры: {{ post.views }}</div>  <!-- Просмотры -->
+                        <div>Комментарии: {{ post.comment_count }}</div>    <!-- Коментарии -->
+                    </div>
+                </div>
 
+            </div>
+            {% endfor %}
         </div>
 
 

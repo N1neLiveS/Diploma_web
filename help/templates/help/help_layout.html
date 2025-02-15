@@ -15,26 +15,34 @@
 
         <div class="search-container">
             <input type="text" placeholder="Поиск по вопросам">
-            <button onclick="createPost()">Задать вопрос</button>
+            <button onclick="window.location.href='{% url 'create_question' %}';">Задать вопрос</button>
         </div>
 
 
-        <div class="post" id="posts-container">
+        <div id="posts-container">
+            {% for question in questions %}
+            <div class="post" onclick="window.location.href='{% url 'question_detail' question.id %}';">
 
-            <div class="user-avatar">
-                <img src="{% static 'forum/img/defoult_avatar.jpg' %}" alt="">
-                <p>Vladimir</p>
-            </div>
-            <div class="post-content">
-                <h2>Не воспроизводится видео</h2>
-                <p>Почему не воспроизводится видео в курсе по Python?</p>
-                <div class="post-footer">
-                    <div>30.01.2025</div>
-                    <div>Просмотры: 43</div>
-                    <div>Комментарии: 0</div>
+                <div class="user-avatar">
+                    {% if question.author.profile.avatar %}
+                        <img src="{{ question.author.profile.avatar.url }}" alt="Аватар {{ question.author.username }}"> <!-- Аватар пользователя -->
+                    {% else %}
+                        <img src="{% static 'forum/img/defoult_avatar.jpg' %}" alt="Аватар по умолчанию"> <!-- Аватар по умолчанию -->
+                    {% endif %}
+                    <p>{{ question.author.username }}</p> <!-- Имя пользователя -->
                 </div>
-            </div>
+                <div class="post-content">
+                    <h2>{{ question.title }}</h2>   <!-- Заголовок поста -->
+                    <p>{{ question.content|slice:":225" }}</p> <!-- Ограничение на вывод символов в 225 -->
+                    <div class="post-footer">
+                        <div>{{ question.created_at|date:"d.m.Y H:i" }}</div>   <!-- Датта создания поста -->
+                        <div>Просмотры: {{ question.views }}</div>  <!-- Просмотры -->
+                        <div>Комментарии: {{ question.comments_count }}</div>    <!-- Коментарии -->
+                    </div>
+                </div>
 
+            </div>
+            {% endfor %}
         </div>
 
 

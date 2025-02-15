@@ -1,0 +1,66 @@
+{% extends 'main/global_layout.html' %}
+{% load static %}
+{% block title %}{{ help.title }}{% endblock %}
+
+{% block content %}
+
+    <script src="{% static 'quests/js/navbar.js' %}"></script>
+
+    <div class="quests_content">
+        <div class="quests_nav_container">
+            <a href="" class="nav-item active">Свежее</a>
+            <div class="highlight-bar"></div>
+        </div>
+
+        <div class="post-container">
+            <div class="post-title">{{ question.title }}</div>
+            <div class="post-content">{{ question.content }}</div>
+            <div class="post-meta">
+                Опубликовано {{ question.author.username }} | {{ question.created_at }} | Просмотров: {{ question.views }}
+            </div>
+        </div>
+
+
+        <div style="padding: 0px 100px 20px 100px;">
+
+            <div class="add-comment">
+                <h2>Добавить комментарий</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    <textarea name="content" rows="3" cols="40" class="form-control" placeholder="Введите ваш комментарий"></textarea>
+                    <div style=" text-align:right;">
+                        <button type="submit" class="btn-submit small">Отправить</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="comments">
+                <h2>Комментарии:</h2>
+                {% for comment in question.comments.all %}
+                <div class="comment">
+
+                    <div class="user-avatar">
+                        {% if question.author.profile.avatar %}
+                            <img src="{{ question.author.profile.avatar.url }}" alt="Аватар {{ question.author.username }}"> <!-- Аватар пользователя -->
+                        {% else %}
+                            <img src="{% static 'forum/img/defoult_avatar.jpg' %}" alt="Аватар по умолчанию"> <!-- Аватар по умолчанию -->
+                        {% endif %}
+                        <p><strong>{{ question.author.username }}</strong></p> <!-- Имя пользователя -->
+                    </div>
+                    <div class="comment-content">
+                        <p> {{ comment.content }}</p>
+                        <small>{{ comment.created_at|date:"d.m.Y H:i" }}</small>
+                    </div>
+
+                </div>
+                {% empty %}
+                <p>Комментариев пока нет.</p>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+
+
+
+{% endblock %}

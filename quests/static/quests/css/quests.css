@@ -4,7 +4,7 @@
     box-sizing: border-box;
     width: auto;
     background: #1f2023;
-    padding: 0px 100px;
+    padding: 0px 100px 20px 100px;
 }
 
 .quests_content h3 {

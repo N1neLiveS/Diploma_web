@@ -8,7 +8,14 @@
             <h1 id="sectionTitle" style="font-size: 12px; padding-top: 7px;">Заголовок раздела</h1>
         </div>
         <div class="right_info">
-            <button type="submit" class="button-start small">Начать обучение</button>
+            {% if user.is_authenticated %}
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="button-start small">Выйти</button>
+                </form>
+            {% else %}
+                <button onclick="window.location.href='{% url 'welcome' %}'" class="button-start small">Начать обучение</button>
+            {% endif %}
         </div>
     </div>
 </header>

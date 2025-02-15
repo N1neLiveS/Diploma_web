@@ -30,4 +30,5 @@ urlpatterns = [
     path('groups/', include('groups.urls')),
     path('projects/', include('projects.urls')),
     path('help/', include('help.urls')),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('me/', include('me.urls')),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
