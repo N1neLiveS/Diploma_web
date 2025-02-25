@@ -55,6 +55,7 @@
     position: absolute;
     bottom: -2px;
     transition: width 0.3s ease;
+    opacity: 0;
 }
 
 
@@ -117,7 +118,7 @@
     flex-direction: column;
     border-radius: 15px;
     max-width: 140px;
-    min-height: 120px;
+    min-height: 100px;
     padding: 20px 20px 0px 20px;
     text-align: center;
     position: relative;
@@ -126,7 +127,11 @@
 .module_card_format img {
     border-radius: 15px;
     margin: -21px;
-    width: 141px;
+    display: flex;
+    width: 140px;
+    height: 100px;
+    object-fit: cover;
+    cursor: pointer;
 }
 
 .module_card_format p {
@@ -183,3 +188,9 @@
   content: '\2796';
 }
 
+
+@font-face {
+   font-family: 'ShareTechMonoRegular';
+   src:
+     url({% static 'fonts/ShareTechMonoRegular.ttf' %});
+}

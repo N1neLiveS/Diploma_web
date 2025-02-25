@@ -1,0 +1,65 @@
+{% extends 'main/global_layout.html' %}
+{% load static %}
+{% block title %}Курс Python - Статьи{% endblock %}
+
+{% block content %}
+
+    <script src="{% static 'quests/js/navbar.js' %}"></script>
+
+    <div class="quests_content">
+
+        <div class="quests_nav_container">
+            <a href="" class="nav-item disabled">Свежее</a>
+            <a href="#" class="nav-item active">Просматриваемое</a>
+            <div class="highlight-bar"></div>
+        </div>
+
+        <div class="search-container">
+            <input type="text" placeholder="Поиск по статьям">
+            <button onclick="window.location.href='{% url 'create_article' %}';" style="width: 125px;">Написать статью</button>
+        </div>
+
+
+        <div id="posts-container">
+            {% for article in articles %}
+            <div class="article" onclick="window.location.href='{% url 'article_detail' article.id %}';">
+
+                <div class="article_poster">
+                    {% if article.poster %}
+                        <img src="{{ article.poster.url }}"> <!-- Аватар пользователя -->
+                    {% endif %}
+                </div>
+                <div class="article-content">
+                    <div class="user-avatar">
+                        {% if article.author.profile.avatar %}
+                            <img src="{{ article.author.profile.avatar.url }}" alt="Аватар {{ article.author.username }}"> <!-- Аватар пользователя -->
+                        {% else %}
+                            <img src="{% static 'forum/img/defoult_avatar.jpg' %}" alt="Аватар по умолчанию"> <!-- Аватар по умолчанию -->
+                        {% endif %}
+                        <p>{{ article.author.username }}</p> <!-- Имя пользователя -->
+                    </div>
+
+                    <h2>{{ article.title }}</h2>   <!-- Заголовок поста -->
+                    <p>{{ article.content|slice:":225"|title|striptags }}</p> <!-- Ограничение на вывод символов в 225 -->
+                    <div class="article-footer">
+                        <div>{{ article.created_at|date:"d.m.Y H:i" }}</div>   <!-- Датта создания поста -->
+                        <div>Просмотры: {{ article.views }}</div>  <!-- Просмотры -->
+                        <div>Комментарии: {{ article.comments_count }}</div>    <!-- Коментарии -->
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="pagination" id="pagination">
+            <button id="prev-button" onclick="changePage(-1)">← Пред.</button>
+            <span id="page-info"></span>
+            <button id="next-button" onclick="changePage(1)">След. →</button>
+        </div>
+
+    </div>
+
+
+
+{% endblock %}

@@ -1,18 +1,19 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django_ckeditor_5.fields import CKEditor5Field
 
 
 class Question(models.Model):
-    # Связь с пользователем (автором поста)
+    # Связь с пользователем (автором вопроса)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='questions')
 
-    # Заголовок поста
+    # Заголовок вопроса
     title = models.CharField('Название', max_length=200)
 
-    # Текст поста
-    content = models.TextField('Текст')
+    # Текст вопроса
+    content = CKEditor5Field(verbose_name='Текст вопроса', config_name='extends')
 
-    # Дата создания поста (автоматически добавляется при создании)
+    # Дата создания вопроса (автоматически добавляется при создании)
     created_at = models.DateTimeField('Дата', auto_now_add=True)
 
     # Счётчик просмотров
@@ -28,18 +29,18 @@ class Question(models.Model):
 
     @property
     def comments_count(self):
-        return self.comments.count()
+        return self.question_comments.count()
 
 
 class Comment(models.Model):
     # Связь с вопросом (Question)
-    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='comments')
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='question_comments')
 
     # Связь с пользователем (автором комментария)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='question_comments')
 
     # Текст комментария
-    content = models.TextField()
+    content = models.TextField(max_length=200)
 
     # Дата создания комментария
     created_at = models.DateTimeField(auto_now_add=True)

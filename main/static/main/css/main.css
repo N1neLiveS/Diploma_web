@@ -493,6 +493,11 @@ header img {
     font-weight: bold;
 }
 
+.form-group.create-post {
+    width: 400px;
+}
+
+
 .form-group.create-post label {
     min-width: 300px;
 }

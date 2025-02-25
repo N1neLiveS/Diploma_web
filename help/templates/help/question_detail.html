@@ -14,7 +14,7 @@
 
         <div class="post-container">
             <div class="post-title">{{ question.title }}</div>
-            <div class="post-content">{{ question.content }}</div>
+            <div class="post-content">{{ question.content|linebreaks }}</div>
             <div class="post-meta">
                 Опубликовано {{ question.author.username }} | {{ question.created_at }} | Просмотров: {{ question.views }}
             </div>
@@ -54,7 +54,7 @@
 
                 </div>
                 {% empty %}
-                <p>Комментариев пока нет.</p>
+                <p style="color: white;font-size: 8px;">Комментариев пока нет.</p>
                 {% endfor %}
             </div>
 

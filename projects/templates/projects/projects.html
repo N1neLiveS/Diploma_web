@@ -1,6 +1,6 @@
 {% extends 'main/global_layout.html' %}
 {% load static %}
-{% block title %}Курс Python - Карта квестов{% endblock %}
+{% block title %}Курс Python - Карта проектов{% endblock %}
 
 {% block content %}
 
@@ -18,7 +18,7 @@
 
         <div class="quests_card" style="padding-top: 10px;">
 
-            <div onclick="" class="project_card_format">
+            <div onclick="window.location.href='{% url 'python_django' %}';" class="project_card_format">
                 <img src="{% static 'quests/img/Python_Django.svg' %}" alt="" style="margin: -21px; border-radius: 15px;">
                 <h3 align="center">Python Django.</h3>
                 <p align="left" >Разработка 3-х страничного сайта. <br> Технологии: Python, HTML, CSS, SQL.</p>

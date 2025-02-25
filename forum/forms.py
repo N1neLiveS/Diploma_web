@@ -5,15 +5,15 @@ from .models import Post, Comment
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'content']  # Поля, которые будут в форме
-        widgets = {
-            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Введите заголовок'}),
-            'content': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Введите текст поста', 'rows': 5}),
-        }
-        labels = {
-            'title': 'Заголовок',
-            'content': 'Текст поста',
-        }
+        fields = ['title', 'content']
+
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+            for field in self.fields:
+                self.fields[field].widget.attrs.update({'class': 'form-control', 'autocomplete': 'off'})
+
+            self.fields['content'].widget.attrs.update({'class': 'form-control django_ckeditor_5'})
+            self.fields['content'].required = False
 
 
 class CommentForm(forms.ModelForm):

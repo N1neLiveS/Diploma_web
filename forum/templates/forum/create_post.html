@@ -5,10 +5,11 @@
 {% block content %}
 
     <script src="{% static 'quests/js/navbar.js' %}"></script>
+    {{ form.media }}
 
     <div class="quests_content">
         <div class="quests_nav_container">
-            <a href="" class="nav-item disabled">Все проекты</a>
+            <a href="{% url 'forum' %}" class="nav-item active">Все посты</a>
             <div class="highlight-bar"></div>
         </div>
 
@@ -16,13 +17,9 @@
             <h1>Создать пост</h1>
             <form method="post">
                 {% csrf_token %}
-                <div class="form-group">
-                    {{ form.title.label_tag }}
-                    {{ form.title }}
-                </div>
                 <div class="form-group create-post">
-                    {{ form.content.label_tag }}
-                    {{ form.content }}
+                    {{ form.media }}
+                    {{ form.as_p }}
                 </div>
                 <div style="text-align: center;">
                     <button type="submit" class="btn-submit">Опубликовать</button>

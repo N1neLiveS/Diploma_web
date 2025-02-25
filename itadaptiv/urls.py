@@ -21,13 +21,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path('ckeditor5/', include('django_ckeditor_5.urls')),
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
     path('quests/', include('quests.urls')),
     path('tasks/', include('tasks.urls')),
     path('tests/', include('tests.urls')),
     path('forum/', include('forum.urls')),
-    path('groups/', include('groups.urls')),
+    path('articles/', include('articles.urls')),
     path('projects/', include('projects.urls')),
     path('help/', include('help.urls')),
     path('me/', include('me.urls')),

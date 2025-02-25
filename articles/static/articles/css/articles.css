@@ -1,0 +1,87 @@
+.article {
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    min-height: 130px;
+    max-height: 160px;
+    min-width: 130px;
+    cursor: pointer;
+}
+
+
+/* Стили для дочерних элементов */
+.article .article_poster {
+    display: flex;
+    background: #2c3439;
+    max-width: 35%;
+    transition: background-color 0.3s ease;
+    align-items: center;
+}
+
+.article .article_poster img{
+    width: 100%;
+    background-size: cover;
+    border-radius: 10px;
+}
+
+.article .user-avatar {
+    width: 15%;
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+    color: white;
+}
+
+.article .user-avatar img {
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    display: flex;
+    margin-right: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.article .article-content {
+    position: relative;
+    padding: 15px;
+    width: 100%;
+    padding-bottom: 30px;
+    background: #2c3439;
+    transition: background-color 0.3s ease;
+}
+
+.article .article-content h2 {
+    margin: 0 0 10px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+}
+
+.article .article-content p {
+    font-size: 10px;
+    color: white;
+}
+
+.article .article-footer {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    width: 90%;
+    bottom: 10px;
+    font-size: 10px;
+    color: #666;
+}
+
+.article:hover .article-content {
+    background-color: #323d44;
+}
+
+.post-content img{
+    width: 100%;
+    height: auto;
+}

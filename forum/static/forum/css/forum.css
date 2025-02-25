@@ -54,7 +54,7 @@
     border-right: 1px solid #ccc;
     font-size: 12px;
     color: white;
-    transition: background-color 0.3s ease; /* Добавляем плавный переход */
+    transition: background-color 0.3s ease;
 }
 
 .post .user-avatar img {
@@ -72,7 +72,7 @@
     width: 85%;
     padding-bottom: 30px;
     background: #2c3439;
-    transition: background-color 0.3s ease; /* Добавляем плавный переход */
+    transition: background-color 0.3s ease;
 }
 
 .post .post-content h2 {
@@ -157,18 +157,22 @@
     font-size: 14px;
     color: #666;
 }
-
+.post-content img{
+    width: 100%;
+    height: auto;
+}
 
 /* Стили для комментариев */
 
 .comments {
     margin-top: 20px;
     padding: 10px;
-    background-color: #f1f1f1;
     border-radius: 5px;
 }
 
+
 .comments h2 {
+    color: white;
     font-size: 16px;
 }
 

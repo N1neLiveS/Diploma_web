@@ -21,10 +21,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Установка подсветки при загрузке страницы
-    const path = window.location.pathname; // Получаем путь текущего URL
+    const path = window.location.pathname.split("/").reverse()[1]; // Получаем путь текущего URL
     navItems.forEach(item => {
         if (path.includes(item.getAttribute('href'))) { // Проверяем путь
             item.classList.add('active'); // Устанавливаем активный класс
+            highlightBar.style.opacity = '1';
             updateHighlightBar(item); // Обновляем подсветку
         }
     });
