@@ -42,9 +42,14 @@
                     <p>1.2 Знакомство с онлайн-редактором. </p>
                 </div>
 
-                <div class="module_card_format">
+                <div class="module_card_format" onclick="window.location.href='{% url 'lecture_detail' lectures.0.id %}';">
                     <img src="{% static 'quests/img/Python Basic_1-3.svg' %}" alt="">
-                    <p>1.3 Особенности работы с print и input</p>
+                    <p>1.3 Особенности работы с print</p>
+                </div>
+
+                <div class="module_card_format" onclick="window.location.href='{% url 'lecture_detail' lectures.1.id %}';">
+                    <img src="{% static 'quests/img/Python Basic_1-4.jpg' %}" alt="">
+                    <p>1.4 Особенности работы с input</p>
                 </div>
 
                 <div class="module_card_format">

@@ -38,3 +38,11 @@ class Comment(models.Model):
     def __str__(self):
         return f"Comment by {self.author.username} on {self.post.title}"
 
+
+class Review(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reviews')
+    content = models.TextField(max_length=300)
+    created_at = models.DateTimeField('Дата', auto_now_add=True)
+
+    def __str__(self):
+        return self.content

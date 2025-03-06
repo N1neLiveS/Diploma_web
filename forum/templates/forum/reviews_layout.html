@@ -1,0 +1,48 @@
+{% extends 'main/global_layout.html' %}
+{% load static %}
+{% block title %}Курс Python - Отзывы{% endblock %}
+
+{% block content %}
+
+    <script src="{% static 'quests/js/navbar.js' %}"></script>
+
+    <div class="quests_content">
+
+        <div class="search-container"  style="padding-top: 35px;">
+            <input type="text" placeholder="Поиск по постам">
+            <button onclick="window.location.href='{% url 'create_review' %}';" style="width: 110px;">Оставить отзыв</button>
+        </div>
+
+        <div id="posts-container">
+            {% for review in reviews %}
+            <div class="post" onclick="window.location.href='{% url 'post_detail' post.id %}';">
+
+                <div class="user-avatar">
+                    {% if review.author.profile.avatar %}
+                        <img src="{{ review.author.profile.avatar.url }}" alt="Аватар {{ post.author.username }}"> <!-- Аватар пользователя -->
+                    {% else %}
+                        <img src="{% static 'forum/img/defoult_avatar.jpg' %}" alt="Аватар по умолчанию"> <!-- Аватар по умолчанию -->
+                    {% endif %}
+                    <p>{{ review.author.username }}</p> <!-- Имя пользователя -->
+                </div>
+                <div class="post-content"><!-- Заголовок поста -->
+                    <p> {{ review.content }} </p> <!-- Ограничение на вывод символов в 225 -->
+                    <div class="post-footer">
+                        <div>{{ review.created_at|date:"d.m.Y H:i" }}</div>   <!-- Датта создания поста -->
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="pagination" id="pagination">
+            <button id="prev-button" onclick="changePage(-1)">← Пред.</button>
+            <span id="page-info"></span>
+            <button id="next-button" onclick="changePage(1)">След. →</button>
+        </div>
+
+    </div>
+
+
+{% endblock %}

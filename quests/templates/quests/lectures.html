@@ -7,12 +7,39 @@
     <script src="{% static 'quests/js/navbar.js' %}"></script>
 
     <div class="quests_content">
-            <div class="quests_nav_container">
-                <a href="#" class="nav-item active">Моё обучение</a>
-                <a href="{% url 'quests' %}" class="nav-item active">Карта квестов</a>
-                <a href="" class="nav-item disabled">Лекции</a>
-                <div class="highlight-bar"></div>
+        <div class="quests_nav_container">
+            <a href="#" class="nav-item active">Моё обучение</a>
+            <a href="{% url 'quests' %}" class="nav-item active">Карта квестов</a>
+            <a href="{% url 'lectures' %}" class="nav-item disabled">Лекции</a>
+            <div class="highlight-bar"></div>
+        </div>
+
+        <div class="task_card">
+            {% for lecture in lectures %}
+            <div class="task_card_format" onclick="window.location.href='{% url 'lecture_detail' lecture.id %}';">
+                <div class="task_avatar">
+                    {% if lecture.poster %}
+                        <img src="{{ lecture.poster.url }}"> <!-- Превью -->
+                    {% endif %}
+                    <h3 align="center"> {{ lecture.title }} </h3>
+                </div>
+                <h2>Тема: {{ lecture.tags.all|join:", " }} </h2>
+                <p align="left" > {{ lecture.description }} </p>
+                <div class="bottom_element">
+                    <div class="badge text-bg-success text-wrap" style="font-size: 8px; text-align: center; width: 70px; height: 15px;">
+                        Доступен
+                    </div>
+                </div>
             </div>
+            {% endfor %}
+        </div>
+
+        <div class="pagination" id="pagination">
+            <button id="prev-button" onclick="changePage(-1)">← Пред.</button>
+            <span id="page-info"></span>
+            <button id="next-button" onclick="changePage(1)">След. →</button>
+        </div>
+
     </div>
 
 

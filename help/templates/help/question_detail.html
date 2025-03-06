@@ -5,6 +5,7 @@
 {% block content %}
 
     <script src="{% static 'quests/js/navbar.js' %}"></script>
+    <script>hljs.highlightAll();</script>
 
     <div class="quests_content">
         <div class="quests_nav_container">
@@ -14,7 +15,7 @@
 
         <div class="post-container">
             <div class="post-title">{{ question.title }}</div>
-            <div class="post-content">{{ question.content|linebreaks }}</div>
+            <div class="post-content">{{ question.content|safe }}</div>
             <div class="post-meta">
                 Опубликовано {{ question.author.username }} | {{ question.created_at }} | Просмотров: {{ question.views }}
             </div>
@@ -36,7 +37,7 @@
 
             <div class="comments">
                 <h2>Комментарии:</h2>
-                {% for comment in question.comments.all %}
+                {% for comment in question.question_comments.all %}
                 <div class="comment">
 
                     <div class="user-avatar">

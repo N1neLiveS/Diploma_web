@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .forms import PostForm, CommentForm
-from .models import Post, Comment
+from .forms import PostForm, CommentForm, ReviewForm
+from .models import Post, Comment, Review
 
 
 def forum(request):
@@ -47,3 +47,22 @@ def post_detail(request, post_id):
         request.session['viewed_posts'] = viewed_posts  # Обновляем сессию
 
     return render(request, 'forum/post_detail.html', {'post': post, 'form': form})
+
+
+def reviews_layout(request):
+    reviews = Review.objects.all().order_by('-created_at')
+    return render(request, 'forum/reviews_layout.html', {'reviews': reviews})
+
+
+@login_required
+def create_review(request):
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.author = request.user  # Устанавливаем автора
+            review.save()
+            return redirect('reviews')
+    else:
+        form = ReviewForm()
+    return render(request, 'forum/create_review.html', {'form': form})

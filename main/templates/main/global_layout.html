@@ -16,8 +16,12 @@
     <link rel="stylesheet" href="{% static 'tasks/css/tasks.css' %}">
     <link rel="stylesheet" href="{% static 'articles/css/articles.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/41.1.0/super-build/ckeditor.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
 
     <style>
         .bottom-img {
@@ -49,7 +53,7 @@
             <ul>
                 <a href="{% url 'forum' %}"><li><i class="bi bi-chat-text-fill"></i><span style="margin-left: 8px;">Форум</span></li></a>
                 <a href="{% url 'articles' %}"><li><i class="bi bi-book-fill"></i><span style="margin-left: 8px;">Статьи</span></li></a>
-                <a href="{% url 'articles' %}"><li><i class="bi bi-journal-text"></i><span style="margin-left: 8px;">Отзывы</span></li></a>
+                <a href="{% url 'reviews' %}"><li><i class="bi bi-journal-text"></i><span style="margin-left: 8px;">Отзывы</span></li></a>
             </ul>
         </div>
     </aside>

@@ -438,7 +438,10 @@ header img {
     min-height: 25px;
     padding: var(--btn-padding-small:);
     width: 80%;
+}
 
+.button-welcome.signup:hover {
+    background-color: #faca1b;
 }
 
 .button-welcome.login {
@@ -452,6 +455,9 @@ header img {
     width: 80%;
 }
 
+.button-welcome.login:hover {
+    background-color: #070582;
+}
 
 /* Стили для login_block */
 

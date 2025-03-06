@@ -1,0 +1,24 @@
+{% extends 'main/global_layout.html' %}
+{% load static %}
+{% block title %}{{ lecture.title }}{% endblock %}
+
+{% block content %}
+
+    <script src="{% static 'quests/js/navbar.js' %}"></script>
+    <script>hljs.highlightAll();</script>
+
+    <div class="quests_content">
+        <div class="quests_nav_container">
+            <a href="#" class="nav-item active">Моё обучение</a>
+            <a href="{% url 'quests' %}" class="nav-item active">Карта квестов</a>
+            <a href="{% url 'lectures' %}" class="nav-item active">Лекции</a>
+            <div class="highlight-bar"></div>
+        </div>
+
+        <div class="post-container">
+            <div class="lecture-content">{{ lecture.content|safe }}</div>
+        </div>
+
+    </div>
+
+{% endblock %}
