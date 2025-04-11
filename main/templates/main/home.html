@@ -60,7 +60,11 @@
             <p style="line-height: 15px;" align="justify">Ты научишься программировать. Не важно, сколько тебе лет и какой у тебя багаж знаний. Программирование, как и езда на велосипеде
                 — это навык: поэтому важна практика. Считай, что курсы Python разработки от PythonBoom — это твой “велотренажер”. Тренируйся писать код на Python онлайн: в своем темпе,
                 с практикой с первых уроков. Кодить — не страшно! Просто начни.</p>
-            <button onclick="window.location.href='{% url 'welcome' %}'" class="button-start large">Я в деле - начнем!</button>
+            {% if user.is_authenticated %}
+                <button onclick="window.location.href='{% url 'me' %}'" class="button-start large">В личный кабинет!</button>
+            {% else %}
+                <button onclick="window.location.href='{% url 'welcome' %}'" class="button-start large">Я в деле - начнем!</button>
+            {% endif %}
         </div>
         <div class="content_info_img">
             <img src="{% static 'main/img/png/hero_main.png' %}" class="img-responsive" alt="Пример" style="max-width: 80%; height: auto;">

@@ -1,0 +1,115 @@
+.slider_card {
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: 120px;
+    width: 160px;
+    min-height: 100px;
+    min-width: 130px;
+    cursor: pointer;
+}
+
+
+/* Стили для дочерних элементов */
+
+.slider_card .slider-content {
+    position: relative;
+    padding: 5px;
+    width: 100%;
+    background: #2c3439;
+    transition: background-color 0.3s ease;
+}
+
+.slider_card .slider-content h2 {
+    margin: 5px 0 10px 5px;
+    font-size: 8px;
+    font-weight: bold;
+    color: white;
+}
+
+.slider_card .slider-content p {
+    margin: 5px 0 10px 5px;
+    font-size: 8px;
+    color: white;
+}
+
+.slider_card .slider-footer {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    width: 95%;
+    bottom: 10px;
+    font-size: 6px;
+    color: #666;
+}
+
+.slider_card:hover .slider-content {
+    background-color: #323d44;
+}
+
+
+/* Стили для стриницы лк */
+
+.user-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+/* Стили для страницы настроек */
+
+.personal-image {
+    text-align: center;
+}
+
+.personal-image input[type="file"] {
+    display: none;
+}
+
+.personal-figure {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.personal-avatar {
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+    box-sizing: border-box;
+    border-radius: 100%;
+    border: 2px solid transparent;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
+    transition: all ease-in-out .3s;
+}
+
+.personal-avatar:hover {
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+}
+
+.personal-figcaption {
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+    width: inherit;
+    height: inherit;
+    border-radius: 100%;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0);
+    transition: all ease-in-out .3s;
+}
+
+.personal-figcaption:hover {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.personal-figcaption > img {
+    margin-top: 32.5px;
+    width: 35px;
+    height: 35px;
+}

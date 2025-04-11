@@ -1,10 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'main/global_layout.html' %}
+{% load static %}
+{% block title %}Курс Python - Тесты{% endblock %}
+
+{% block content %}
+
+    <script src="{% static 'quests/js/navbar.js' %}"></script>
+
+    <div class="quests_content">
+        <div class="quests_nav_container">
+            <a href="{% url 'tests' %}" class="nav-item active">Все тесты</a>
+            <div class="highlight-bar"></div>
+        </div>
+
+        <div style="text-align: center; color: white;">
+            <h1 style="font-size: 22px; margin-top: 10px;">{{ test.title }}</h1>
+        </div>
+
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-container" style="justify-content: flex-start; align-items: flex-start; margin-top: 20px; background: #00aef4; margin-bottom: 10px;">
+                    <div style="text-align: left;">
+                        <p style="font-size: 12px;">{{ field.label_tag }}</p>
+                    </div>
+                    <div style="font-size: 10px;">
+                        {{ field }}
+                    </div>
+                </div>
+            {% endfor %}
+        </form>
+        <div style="text-align: center;">
+            <button type="submit" class="btn-submit">Сдать тест</button>
+        </div>
+
+    </div>
+
+
+
+{% endblock %}

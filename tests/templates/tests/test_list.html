@@ -7,10 +7,35 @@
     <script src="{% static 'quests/js/navbar.js' %}"></script>
 
     <div class="quests_content">
-            <div class="quests_nav_container">
-                <a href="" class="nav-item disabled">Все тесты</a>
-                <div class="highlight-bar"></div>
+        <div class="quests_nav_container">
+            <a href="" class="nav-item disabled">Все тесты</a>
+            <div class="highlight-bar"></div>
+        </div>
+
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+
+        <div class="task_card">
+            {% for test in tests %}
+            <div class="task_card_format" onclick="window.location.href='{% url 'take_test' test.id %}';">
+                <div class="task_avatar">
+                    <h3 align="center"> {{ test.title }} </h3>
+                </div>
+                <p align="left" > {{ test.description }} </p>
+                <div class="bottom_element">
+                    <div class="badge text-bg-success text-wrap" style="font-size: 8px; text-align: center; width: 70px; height: 15px;">
+                        Доступен
+                    </div>
+                </div>
             </div>
+            {% endfor %}
+        </div>
+
     </div>
 
 

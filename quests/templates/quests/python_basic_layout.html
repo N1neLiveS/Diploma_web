@@ -33,12 +33,12 @@
             <button type="button" class="collapsible_quest">1. Python intro</button>
             <div class="content_coll">
                 <div class="module_card_format">
-                    <img src="{% static 'quests/img/Python Basic_1-1.svg' %}" alt="">
+                    <img src="{% static 'quests/img/poster_simple_video.svg' %}" alt="">
                     <p>1.1 Знакомство с курсом</p>
                 </div>
 
                 <div class="module_card_format">
-                    <img src="{% static 'quests/img/development.svg' %}" alt="">
+                    <img src="{% static 'quests/img/poster_simple_video.svg' %}" alt="">
                     <p>1.2 Знакомство с онлайн-редактором. </p>
                 </div>
 
@@ -52,13 +52,13 @@
                     <p>1.4 Особенности работы с input</p>
                 </div>
 
-                <div class="module_card_format">
-                    <img src="{% static 'quests/img/development.svg' %}" alt="">
+                <div class="module_card_format" onclick="window.location.href='{% url 'take_test' tests.0.id %}';">
+                    <img src="{% static 'quests/img/poster_intro.svg' %}" alt="">
                     <p>1.4 Тест</p>
                 </div>
 
                 <div class="module_card_format">
-                    <img src="{% static 'quests/img/development.svg' %}" alt="">
+                    <img src="{% static 'quests/img/poster_simple.svg' %}" alt="">
                     <p>1.5 Практическая работа </p>
                 </div>
 

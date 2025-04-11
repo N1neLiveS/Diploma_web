@@ -6,42 +6,61 @@
 
     <script src="{% static 'quests/js/navbar.js' %}"></script>
 
-    <div class="quests_content">
+    <div class="quests_content" style="padding-top: 40px;">
 
-        <div class="search-container"  style="padding-top: 35px;">
-            <input type="text" placeholder="Поиск по постам">
-            <button onclick="window.location.href='{% url 'create_review' %}';" style="width: 110px;">Оставить отзыв</button>
+        <div style="color: white; font-size: 10px;">
+            <h3>Оставьте отзыв: это важно</h3>
+            <p>В этом разделе вы можете рассказать о том, что вам нравится в PythonBoom, а что стоит улучшить в курсе, написать о своем опыте обучения или оставить совет
+                для всех, кто приступает к изучению Python.</p>
+            <h3>Что делать, если возник вопрос по курсу?</h3>
+            <p>Если у вас что-то не работает, сервер не принимает задачу (даже если вы на 100% уверены, что она решена правильно), опишите ситуацию в разделе “Помощь”.</p>
+            <p>По всем остальным вопросам (не связанным с решением задач) обращайтесь в службу поддержки: support@pythonboom.com.</p>
+
         </div>
 
-        <div id="posts-container">
-            {% for review in reviews %}
-            <div class="post" onclick="window.location.href='{% url 'post_detail' post.id %}';">
+        <div style="padding: 0px 100px 20px 100px;">
 
-                <div class="user-avatar">
-                    {% if review.author.profile.avatar %}
-                        <img src="{{ review.author.profile.avatar.url }}" alt="Аватар {{ post.author.username }}"> <!-- Аватар пользователя -->
-                    {% else %}
-                        <img src="{% static 'forum/img/defoult_avatar.jpg' %}" alt="Аватар по умолчанию"> <!-- Аватар по умолчанию -->
-                    {% endif %}
-                    <p>{{ review.author.username }}</p> <!-- Имя пользователя -->
-                </div>
-                <div class="post-content"><!-- Заголовок поста -->
-                    <p> {{ review.content }} </p> <!-- Ограничение на вывод символов в 225 -->
-                    <div class="post-footer">
-                        <div>{{ review.created_at|date:"d.m.Y H:i" }}</div>   <!-- Датта создания поста -->
+            <div class="add-comment">
+                <h2>Добавить отзыв</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    <textarea name="content" rows="3" cols="40" class="form-control" style="font-size: 12px;" placeholder="Введите ваш отзыв"></textarea>
+                    <div style=" text-align:right;">
+                        <button type="submit" class="btn-submit small">Отправить</button>
                     </div>
-                </div>
-
+                </form>
             </div>
-            {% endfor %}
-        </div>
 
-        <div class="pagination" id="pagination">
-            <button id="prev-button" onclick="changePage(-1)">← Пред.</button>
-            <span id="page-info"></span>
-            <button id="next-button" onclick="changePage(1)">След. →</button>
-        </div>
+            <div class="comments">
+                <h2>Отзывы:</h2>
+                {% for review in reviews.all %}
+                <div class="comment">
 
+                    <div class="user-avatar">
+                        {% if review.author.profile.avatar %}
+                            <img src="{{ review.author.profile.avatar.url }}" alt="Аватар {{ review.author.username }}"> <!-- Аватар пользователя -->
+                        {% else %}
+                            <img src="{% static 'forum/img/defoult_avatar.jpg' %}" alt="Аватар по умолчанию"> <!-- Аватар по умолчанию -->
+                        {% endif %}
+                        <p><strong>{{ review.author.username }}</strong></p> <!-- Имя пользователя -->
+                    </div>
+                    <div class="comment-content">
+                        <p> {{ review.content }}</p>
+                        <small>{{ review.created_at|date:"d.m.Y H:i" }}</small>
+                    </div>
+
+                </div>
+                {% empty %}
+                <p style="color: white;font-size: 8px;">Отзывов пока нет.</p>
+                {% endfor %}
+            </div>
+
+            <div class="pagination" id="pagination">
+                <button id="prev-button" onclick="changePage(-1)">← Пред.</button>
+                <span id="page-info"></span>
+                <button id="next-button" onclick="changePage(1)">След. →</button>
+            </div>
+        </div>
     </div>
 
 

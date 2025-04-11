@@ -1,3 +1,4 @@
+{% load static %}
 <header>
     <div class="head_info">
         <div class="left_info">
@@ -18,10 +19,16 @@
         </div>
         <div class="right_info">
             {% if user.is_authenticated %}
-                <form method="post" action="{% url 'logout' %}">
-                    {% csrf_token %}
-                    <button type="submit" class="button-start small">Выйти</button>
-                </form>
+                <button onclick="window.location.href='{% url 'me' %}'" class="button-profile">
+                    <div class="profile-avatar">
+                        {% if user.profile.avatar %}
+                            <img src="{{ user.profile.avatar.url }}" alt="Аватар {{ user.username }}"> <!-- Аватар пользователя -->
+                        {% else %}
+                            <img src="{% static 'forum/img/defoult_avatar.jpg' %}" alt="Аватар по умолчанию"> <!-- Аватар по умолчанию -->
+                        {% endif %}
+                        <p>{{ user.username }}</p> <!-- Имя пользователя -->
+                    </div>
+                </button>
             {% else %}
                 <button onclick="window.location.href='{% url 'welcome' %}'" class="button-start small">Начать обучение</button>
             {% endif %}

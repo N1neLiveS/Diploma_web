@@ -5,14 +5,132 @@
 {% block content %}
 
     <script src="{% static 'quests/js/navbar.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'me/css/slick.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'me/css/slick-theme.css' %}"/>
+
+    <style type="text/css">
+        .slider {
+            align-items: center;
+            align-content: center;
+            width: 100%;
+            height: 150px;
+            background: #1d328c;
+            border-radius: 10px;
+        }
+
+        .slick-slide {
+          margin: 0px 22px;
+        }
+
+        .slick-slide img {
+          width: 100%;
+        }
+
+        .slick-prev:before,
+        .slick-next:before {
+          color: black;
+        }
+    </style>
 
     <div class="quests_content">
-            <div class="quests_nav_container">
-                <a href="" class="nav-item disabled">Все тесты</a>
-                <div class="highlight-bar"></div>
+        <div class="quests_nav_container">
+            <a href="" class="nav-item disabled">Главная</a>
+            <a href="{% url 'settings_account' %}" class="nav-item active">Настройки</a>
+            <div class="highlight-bar"></div>
+        </div>
+
+        <div class="user-content">
+            <div class="article-content">
+                <div class="profile-avatar large">
+                    {% if user.profile.avatar %}
+                        <img src="{{ user.profile.avatar.url }}" alt="Аватар {{ article.author.username }}"> <!-- Аватар пользователя -->
+                    {% else %}
+                        <img src="{% static 'forum/img/defoult_avatar.jpg' %}" alt="Аватар по умолчанию"> <!-- Аватар по умолчанию -->
+                    {% endif %}
+                    <p>{{ user.username }}</p> <!-- Имя пользователя -->
+                </div>
             </div>
+            <div style="padding: 20px 10px 0 0;">
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="button-start small">Выйти</button>
+                </form>
+            </div>
+        </div>
+
+        <div style="display:flex; justify-content: center;"><h3>Ваши вопросы.</h3></div>
+        {% if questions %}
+            <div class="slider">
+                {% for question in questions %}
+                    <div class="slide">
+                        <div class="slider_card" onclick="window.location.href='{% url 'question_detail' question.id %}';">
+                            <div class="slider-content" style="width:100%;">
+                                <h2>{{ question.title }}</h2>
+                                <p>{{ question.content|slice:":25" }}</p>
+                                <div class="slider-footer">
+                                    <div>Просмотры: {{ question.views }}</div>
+                                    <div>Комментарии: {{ question.comments_count }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+        <div style="display:flex; justify-content: center;"><p>Вы не задали пока ни одного вопроса.</p></div>
+        {% endif %}
+
+
+        <div style="display:flex; justify-content: center;"><h3>Ваши статьи.</h3></div>
+        {% if articles %}
+            <div class="slider">
+                {% for article in articles %}
+                    <div class="slide">
+                        <div class="slider_card" onclick="window.location.href='{% url 'article_detail' article.id %}';">
+                            <div class="slider-content" style="width:100%;">
+                                <h2>{{ article.title }}</h2>
+                                <p>{{ article.content|slice:":25" }}</p>
+                                <div class="slider-footer">
+                                    <div>Просмотры: {{ article.views }}</div>
+                                    <div>Комментарии: {{ article.comments_count }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+        <div style="display:flex; justify-content: center;"><p>Вы не написали пока ни одну статью.</p></div>
+        {% endif %}
     </div>
 
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="{% static 'me/js/slick.min.js' %}"></script>
 
+    <script type="text/javascript">
+        $(document).ready(function(){
+          $('.slider').slick({
+            dots: true,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            responsive: [
+                {
+                  breakpoint: 680,
+                    slidesToScroll: 1
+
+                },
+                {
+                  breakpoint: 480,
+                  settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                  }
+                }
+              ]
+          });
+        });
+    </script>
 
 {% endblock %}
