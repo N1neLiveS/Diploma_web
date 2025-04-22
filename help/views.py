@@ -2,11 +2,22 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import QuestionForm, CommentForm
 from .models import Question, Comment
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def helps_forum(request):
     questions = Question.objects.all().order_by('-created_at')
-    return render(request, 'help/help_layout.html', {'questions': questions})
+
+    items_per_page = 10
+    paginator = Paginator(questions, items_per_page)
+    page_number = request.GET.get('page')
+    try:
+        page_objects = paginator.get_page(page_number)
+    except PageNotAnInteger:
+        page_objects = paginator.get_page(1)
+    except EmptyPage:
+        page_objects = paginator.get_page(paginator.num_pages)
+    return render(request, 'help/help_layout.html', {'page_objects': page_objects})
 
 
 @login_required  # Только авторизованные пользователи могут создавать посты

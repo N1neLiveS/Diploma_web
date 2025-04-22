@@ -1,0 +1,120 @@
+
+<div class="event-popup">
+    <div class="event-popup-header-close">
+        <span class="event-popup-close">&times;</span>
+    </div>
+    <div class="event-popup-header">
+        <h2>Рекомендуем материал по теме: {{ topic }}</h2>
+    </div>
+    <div class="event-content">
+        {% if content_object %}
+            {% if content_type == 'article' %}  <!-- Используем content_type -->
+                <p>Ознакомьтесь со статьей: <a href="{% url 'article_detail' content_object.id %}">{{ content_object.title }}</a></p>
+            {% elif content_type == 'lecture' %}  <!-- Используем content_type -->
+                <p>Посмотрите лекцию: <a href="{% url 'lecture_detail' content_object.id %}">{{ content_object.title }}</a></p>
+            {% else %}
+                <p>Рекомендованный материал: {{ content_object.title }}</p>
+            {% endif %}
+        {% else %}
+            <p>К сожалению, подходящий материал не найден.</p>
+        {% endif %}
+    </div>
+</div>
+
+<style>
+.event-popup {
+    position: fixed;
+    top: 88%;
+    left: 88%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ffc328;
+    border-radius: 15px;
+    min-width: 200px;
+    max-width: 220px;
+    height: 80px;
+    padding: 0px 10px 0px 10px;
+    z-index: 1000;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.event-popup.show {
+    opacity: 1;
+}
+
+.event-popup h2{
+    margin-top: -5px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.event-popup p{
+    font-size: 8px;
+}
+
+.event-content{
+    padding: 0 10px 0 10px;
+    margin: -12px;
+}
+
+.event-popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.event-popup-header-close{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.event-popup-close {
+    font-size: 15px;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.event-popup-close:hover {
+    color: #000;
+}
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const closeButton = document.querySelector('.event-popup-close');
+        const eventPopup = document.querySelector('.event-popup');
+
+        if (eventPopup) {
+            // Добавляем класс 'show' для запуска анимации появления
+            setTimeout(() => {
+                eventPopup.classList.add('show');
+            }, 50); // Небольшая задержка, чтобы анимация работала корректно
+
+            if (closeButton) {
+                closeButton.addEventListener('click', function() {
+                    // Запускаем анимацию исчезновения
+                    eventPopup.classList.remove('show');
+
+                    // После окончания анимации скрываем окно и отправляем запрос на сервер
+                    setTimeout(() => {
+                        eventPopup.style.display = 'none';
+
+                        fetch('/events/close/', {  //  Укажи свой URL
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRFToken': '{{ csrf_token }}'
+                            },
+                            body: JSON.stringify({
+                                event_id: '{{ event.id }}'
+                            })
+                        });
+                    }, 300); // Задержка равна времени анимации
+                });
+            }
+        }
+    });
+</script>

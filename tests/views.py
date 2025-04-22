@@ -5,14 +5,24 @@ from .models import Test, UserTestAttempt, Answer
 from .forms import TakeTestForm
 from django.utils import timezone
 import datetime
-from taggit.models import Tag
 import json
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 @login_required
 def test_list(request):
     tests = Test.objects.all()
-    return render(request, 'tests/test_list.html', {'tests': tests})
+
+    items_per_page = 10
+    paginator = Paginator(tests, items_per_page)
+    page_number = request.GET.get('page')
+    try:
+        page_objects = paginator.get_page(page_number)
+    except PageNotAnInteger:
+        page_objects = paginator.get_page(1)
+    except EmptyPage:
+        page_objects = paginator.get_page(paginator.num_pages)
+    return render(request, 'tests/test_list.html', {'page_objects': page_objects})
 
 
 @login_required
@@ -26,7 +36,7 @@ def take_test(request, test_id):
         time_difference = timezone.now() - last_attempt.date_taken
         weeks_left = (datetime.timedelta(weeks=3) - time_difference).days // 7
         messages.error(request, f'Вы сможете пересдать этот тест только через {weeks_left} недель.')
-        return redirect('test_list')  # Или на страницу с деталями теста
+        return redirect('test_list')
 
     if request.method == 'POST':
         form = TakeTestForm(test, request.POST)

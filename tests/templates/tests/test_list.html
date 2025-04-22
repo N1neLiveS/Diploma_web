@@ -21,7 +21,7 @@
 
 
         <div class="task_card">
-            {% for test in tests %}
+            {% for test in page_objects %}
             <div class="task_card_format" onclick="window.location.href='{% url 'take_test' test.id %}';">
                 <div class="task_avatar">
                     <h3 align="center"> {{ test.title }} </h3>

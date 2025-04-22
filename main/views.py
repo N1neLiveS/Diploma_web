@@ -26,4 +26,3 @@ def last_step(request):
         form = CustomUserCreationForm()
     return render(request, 'main/signup.html', {'form': form})
 
-

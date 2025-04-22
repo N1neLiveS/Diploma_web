@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django_ckeditor_5.fields import CKEditor5Field
+from taggit.managers import TaggableManager
 
 
 class Article(models.Model):
@@ -10,6 +11,7 @@ class Article(models.Model):
     poster = models.ImageField('Превью', upload_to='article_images/', blank=True, null=True)
     created_at = models.DateTimeField('Дата публикации', auto_now_add=True)
     views = models.IntegerField('Просмотры', default=0)
+    article_tags = TaggableManager()
 
     def __str__(self):
         return self.title
