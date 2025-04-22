@@ -49,6 +49,6 @@ class EventMiddleware:
         context = {'content_object': content_object, 'content_type': content_type, 'topic': least_learned_topic}
 
         event_html = render_to_string(event.template_name, context, request=request)
-        # EventLog.objects.create(user=request.user, event=event)
+        EventLog.objects.create(user=request.user, event=event)
 
         return event_html
