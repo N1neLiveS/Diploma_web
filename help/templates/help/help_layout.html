@@ -32,8 +32,15 @@
                     <p>{{ question.author.username }}</p> <!-- Имя пользователя -->
                 </div>
                 <div class="post-content">
-                    <h2>{{ question.title }}</h2>   <!-- Заголовок поста -->
-                    <p>{{ question.content|slice:":225" }}</p> <!-- Ограничение на вывод символов в 225 -->
+                    <div style="display: flex; justify-content: space-between;">
+                        <h2>{{ question.title }}</h2><!-- Заголовок поста -->
+                        {% if question.status  == 'discussing' %}
+                            <p class="badge text-bg-warning text-wrap">{{ question.get_status_display }}</p>
+                        {% else %}
+                            <p class="badge text-bg-success text-wrap">{{ question.get_status_display }}</p>
+                        {% endif %}
+                    </div>
+                    <p>{{ question.content|slice:":25"|safe }}</p> <!-- Ограничение на вывод символов в 225 -->
                     <div class="post-footer">
                         <div>{{ question.created_at|date:"d.m.Y H:i" }}</div>   <!-- Датта создания поста -->
                         <div>Просмотры: {{ question.views }}</div>  <!-- Просмотры -->

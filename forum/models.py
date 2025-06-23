@@ -21,6 +21,10 @@ class Post(models.Model):
     def comment_count(self):
         return self.comments.count()
 
+    class Meta:
+        verbose_name = 'Пост'
+        verbose_name_plural = 'Посты'
+
 
 class Comment(models.Model):
     # Связь с постом
@@ -38,6 +42,11 @@ class Comment(models.Model):
     def __str__(self):
         return f"Comment by {self.author.username} on {self.post.title}"
 
+    class Meta:
+        verbose_name = 'Комментарий Поста'
+        verbose_name_plural = 'Комментрии Поста'
+
+
 
 class Review(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reviews')
@@ -46,3 +55,7 @@ class Review(models.Model):
 
     def __str__(self):
         return self.content
+
+    class Meta:
+        verbose_name = 'Отзыв'
+        verbose_name_plural = 'Отзывы'

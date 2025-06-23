@@ -22,6 +22,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script src="{% static 'main/js/aside.js' %}"></script>
 
     <style>
         .bottom-img {
@@ -33,7 +34,11 @@
 </head>
 <body>
 
-    <aside>
+    <div id="sidebar-toggle-container">
+      <button id="sidebar-toggle">☰</button>
+    </div>
+
+    <aside id="sidebar" >
 
         <aside_box_logo>
             <a href="{% url 'home' %}"><img src="{% static 'main/img/logo_simple.svg' %}" class="img-responsive" alt="Лого"></a>
@@ -59,6 +64,7 @@
         </div>
 
     </aside>
+
 
     {% if request.path == "/" %}
         {% include 'main/special_header.html' %}

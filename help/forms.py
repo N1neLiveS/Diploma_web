@@ -5,7 +5,7 @@ from .models import Question, Comment
 class QuestionForm(forms.ModelForm):
     class Meta:
         model = Question
-        fields = ['title', 'content']
+        fields = ['title', 'content', 'status']
 
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)

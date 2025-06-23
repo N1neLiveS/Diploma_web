@@ -1,10 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'main/global_layout.html' %}
+{% load static %}
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+
+    <h1>Profile Results</h1>
+    <pre>
+    {% for line in profile_report %}
+        {{ line }}
+    {% endfor %}
+    </pre>
+
+{% endblock %}

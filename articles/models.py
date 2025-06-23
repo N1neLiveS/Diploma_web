@@ -24,6 +24,10 @@ class Article(models.Model):
     def comments_count(self):
         return self.article_comments.count()
 
+    class Meta:
+        verbose_name = 'Статья'
+        verbose_name_plural = 'Статьи'
+
 
 class ArticleComment(models.Model):
     # Связь с постом
@@ -40,3 +44,8 @@ class ArticleComment(models.Model):
 
     def __str__(self):
         return f"Comment by {self.author.username} on {self.article.title}"
+
+    class Meta:
+        verbose_name = 'Комментарий Статьи'
+        verbose_name_plural = 'Комментарии Статьи'
+

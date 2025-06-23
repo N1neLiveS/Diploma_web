@@ -13,12 +13,33 @@
             <div class="highlight-bar"></div>
         </div>
 
+
+
         <div class="post-container">
             <div class="post-title">{{ question.title }}</div>
             <div class="post-content">{{ question.content|safe }}</div>
             <div class="post-meta">
                 Опубликовано {{ question.author.username }} | {{ question.created_at }} | Просмотров: {{ question.views }}
             </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between;">
+            {% if request.user == question.author %}
+                <form method="post" action="{% url 'question_delete' question.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn-submit small" style="background-color: #dc3545;">Удалить вопрос</button>
+                </form>
+
+                <form method="post" action="{% url 'question_update_status' question.id %}">
+                    {% csrf_token %}
+                    <select name="status" id="status">
+                        {% for status_choice in question.STATUS_CHOICES %}
+                            <option value="{{ status_choice.0 }}" {% if status_choice.0 == question.status %}selected{% endif %}>{{ status_choice.1 }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit" class="btn-submit small">Изменить статус</button>
+                </form>
+            {% endif %}
         </div>
 
 

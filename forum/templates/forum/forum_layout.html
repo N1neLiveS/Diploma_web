@@ -33,7 +33,7 @@
                 </div>
                 <div class="post-content">
                     <h2>{{ post.title }}</h2>   <!-- Заголовок поста -->
-                    <p> {{ post.content|slice:":225" }} </p> <!-- Ограничение на вывод символов в 225 -->
+                    <p> {{ post.content|slice:":225"|striptags }} </p> <!-- Ограничение на вывод символов в 225 -->
                     <div class="post-footer">
                         <div>{{ post.created_at|date:"d.m.Y H:i" }}</div>   <!-- Датта создания поста -->
                         <div>Просмотры: {{ post.views }}</div>  <!-- Просмотры -->

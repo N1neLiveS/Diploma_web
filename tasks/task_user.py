@@ -1,5 +1,5 @@
 from celery import shared_task
-from tasks.models import TasksWeek
+from .models import TasksWeek
 import csv
 import json
 from taggit.models import Tag
@@ -11,7 +11,7 @@ def update_tasks_week():
     TasksWeek.objects.all().delete()
 
     # 2. Загружаем новые задачи
-    load_new_tasks()
+    load_new_tasks('data/tasks.json', 'json')
 
 
 def load_new_tasks(file_path, file_type='csv'):

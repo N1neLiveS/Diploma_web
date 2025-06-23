@@ -3,6 +3,8 @@ from django.contrib.auth.decorators import login_required
 from .forms import PostForm, CommentForm, ReviewForm
 from .models import Post, Comment, Review
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+import cProfile
+import pstats
 
 
 def forum(request):
@@ -87,3 +89,19 @@ def create_review(request):
     else:
         form = ReviewForm()
     return render(request, 'forum/create_review.html', {'form': form})
+
+
+def profile_create_post(request):
+    """
+    Функция-обертка для профилирования view create_post.
+    Сохраняет результаты профилирования в файл.
+    """
+    profile_file = 'create_post_profile.prof'
+    profiler = cProfile.Profile()  # Создаем профилировщик
+    profiler.enable()  # Запускаем профилирование
+    response = create_post(request)  # Вызываем функцию create_post
+    profiler.disable()  # Останавливаем профилирование
+    profiler.dump_stats(profile_file)  # Сохраняем результаты в файл
+    p = pstats.Stats(profile_file)  # Анализирует результаты и выводит топ самых затратных функций
+    p.strip_dirs().sort_stats('cumulative').print_stats(10)
+    return response

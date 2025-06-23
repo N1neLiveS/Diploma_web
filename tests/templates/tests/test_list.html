@@ -26,6 +26,7 @@
                 <div class="task_avatar">
                     <h3 align="center"> {{ test.title }} </h3>
                 </div>
+                <h2>Тема: {{ test.tags.all|join:", " }} </h2>
                 <p align="left" > {{ test.description }} </p>
                 <div class="bottom_element">
                     <div class="badge text-bg-success text-wrap" style="font-size: 8px; text-align: center; width: 70px; height: 15px;">

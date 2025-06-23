@@ -28,7 +28,7 @@
 
         .slick-prev:before,
         .slick-next:before {
-          color: black;
+          color: #FFC328;
         }
     </style>
 
@@ -66,7 +66,7 @@
                         <div class="slider_card" onclick="window.location.href='{% url 'question_detail' question.id %}';">
                             <div class="slider-content" style="width:100%;">
                                 <h2>{{ question.title }}</h2>
-                                <p>{{ question.content|slice:":25" }}</p>
+                                <p>{{ question.content|slice:":25"|safe }}</p>
                                 <div class="slider-footer">
                                     <div>Просмотры: {{ question.views }}</div>
                                     <div>Комментарии: {{ question.comments_count }}</div>
@@ -77,7 +77,7 @@
                 {% endfor %}
             </div>
         {% else %}
-        <div style="display:flex; justify-content: center;"><p>Вы не задали пока ни одного вопроса.</p></div>
+        <div style="display:flex; justify-content: center; color: white; font-size: 8px;"><p>Вы не задали пока ни одного вопроса.</p></div>
         {% endif %}
 
 
@@ -89,7 +89,7 @@
                         <div class="slider_card" onclick="window.location.href='{% url 'article_detail' article.id %}';">
                             <div class="slider-content" style="width:100%;">
                                 <h2>{{ article.title }}</h2>
-                                <p>{{ article.content|slice:":25" }}</p>
+                                <p>{{ article.content|slice:":25"|striptags }}</p>
                                 <div class="slider-footer">
                                     <div>Просмотры: {{ article.views }}</div>
                                     <div>Комментарии: {{ article.comments_count }}</div>
@@ -100,7 +100,7 @@
                 {% endfor %}
             </div>
         {% else %}
-        <div style="display:flex; justify-content: center;"><p>Вы не написали пока ни одну статью.</p></div>
+        <div style="display:flex; justify-content: center; color: white; font-size: 8px;"><p>Вы не написали пока ни одну статью.</p></div>
         {% endif %}
     </div>
 

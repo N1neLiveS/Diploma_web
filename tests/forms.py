@@ -1,18 +1,20 @@
 from django import forms
-from .models import Answer
+from .models import Answer, Question
 
 
 class TakeTestForm(forms.Form):
-    def __init__(self, test, *args, **kwargs):
+    def __init__(self, test, user, *args, **kwargs): # Add user as an argument
         super().__init__(*args, **kwargs)
         self.test = test
-        for question in test.questions.all():
+        self.user = user  # Save the user
+        self.question_queryset = self.test.get_questions_for_user(self.user)  # Get the adapted questions
+        # Динамическое создание полей для вопросов
+        for question in self.question_queryset:
             choices = [(answer.id, answer.text) for answer in question.answers.all()]
             self.fields[f'question_{question.id}'] = forms.ChoiceField(
-                label=question.text,
                 choices=choices,
-                widget=forms.CheckboxSelectMultiple,
-                required=True
+                label=question.text,
+                widget=forms.RadioSelect  # Или другой виджет
             )
 
     def calculate_score(self, user):

@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Задача 1",
+    "content": "Текст задачи 1",
+    "tags": ["Python", "Django"]
+  },
+  {
+    "name": "Задача 2",
+    "content": "Текст задачи 2",
+    "tags": ["SQL", "Базы данных"]
+  },
+  {
+    "name": "Задача 3",
+    "content": "Текст задачи 3",
+    "tags": ["JavaScript", "Frontend"]
+  }
+]

@@ -15,7 +15,7 @@
 
         <div class="post-container">
             <div class="post-title">{{ post.title }}</div>
-            <div class="post-content">{{ post.content|linebreaks|safe }}</div>
+            <div class="post-content">{{ post.content|striptags|safe }}</div>
             <div class="post-meta">
                 Опубликовано {{ post.author.username }} | {{ post.created_at }} | Просмотров: {{ post.views }}
             </div>

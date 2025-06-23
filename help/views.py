@@ -58,3 +58,26 @@ def question_detail(request, question_id):
         request.session['viewed_questions'] = viewed_questions  # Обновляем сессию
 
     return render(request, 'help/question_detail.html', {'question': question, 'form': form})
+
+
+@login_required
+def question_delete(request, question_id):
+    question = get_object_or_404(Question, id=question_id)
+    if question.can_delete(request.user):  # Проверяем, является ли пользователь автором
+        if request.method == 'POST':
+            question.delete()
+            return redirect('help')  # Перенаправляем на список вопросов после удаления
+    return redirect('question_detail', pk=question_id)
+
+
+@login_required
+def question_update_status(request, question_id):
+    question = get_object_or_404(Question, id=question_id)
+
+    if request.method == 'POST':
+        new_status = request.POST.get('status')  # Получаем новый статус из POST-запроса
+        if new_status in [choice[0] for choice in Question.STATUS_CHOICES]:  # Проверяем, что статус валидный
+            question.status = new_status
+            question.save()
+            return redirect('question_detail', question_id=question.id)  # Перенаправляем на страницу детали вопроса
+    return redirect('question_detail', question_id=question.id)

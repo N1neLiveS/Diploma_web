@@ -5,7 +5,6 @@ from django.contrib import messages
 from help.models import Question
 from articles.models import Article
 from .forms import EditProfileForm, EditProfileAvatarForm, PasswordChangingForm
-from main.models import Profile
 
 
 @login_required
@@ -19,7 +18,7 @@ def me(request):
 @login_required
 def settings_account(request):
     user = request.user
-    profile = user.profile # Получаем профиль пользователя
+    profile = user.profile  # Получаем профиль пользователя
 
     if request.method == 'POST':
         form_password = PasswordChangingForm(user=request.user, data=request.POST)

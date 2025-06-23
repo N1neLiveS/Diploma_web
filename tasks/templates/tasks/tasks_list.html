@@ -9,7 +9,7 @@
     <div class="quests_content">
         <div class="quests_nav_container">
             <a href="" class="nav-item disabled">Все задачи</a>
-            <a href="#" class="nav-item active">Личные задачи</a>
+            <a href="{% url 'my_tasks' %}" class="nav-item active">Личные задачи</a>
             <div class="highlight-bar"></div>
         </div>
 
@@ -23,7 +23,7 @@
                     <h3 align="center"> {{ task.title }} </h3>
                 </div>
                 <h2>Тема: {{ task.tags.all|join:", " }} </h2>
-                <p align="left" > {{ task.description }} </p>
+                <p style="font-size: 7px" align="left"   > {{ task.description }} </p>
                 <div class="bottom_element">
                     <div class="badge text-bg-success text-wrap" style="font-size: 8px; text-align: center; width: 70px; height: 15px;">
                         Доступен

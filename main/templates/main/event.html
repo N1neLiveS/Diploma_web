@@ -8,12 +8,12 @@
     </div>
     <div class="event-content">
         {% if content_object %}
-            {% if content_type == 'article' %}  <!-- Используем content_type -->
+            {% if content_type.model == 'article' %}
                 <p>Ознакомьтесь со статьей: <a href="{% url 'article_detail' content_object.id %}">{{ content_object.title }}</a></p>
-            {% elif content_type == 'lecture' %}  <!-- Используем content_type -->
+            {% elif content_type.model == 'lecture' %}
                 <p>Посмотрите лекцию: <a href="{% url 'lecture_detail' content_object.id %}">{{ content_object.title }}</a></p>
             {% else %}
-                <p>Рекомендованный материал: {{ content_object.title }}</p>
+                <p>Рекомендованный материал: <a href="{{ content_object.get_absolute_url }}">{{ content_object.title }}</a></p>
             {% endif %}
         {% else %}
             <p>К сожалению, подходящий материал не найден.</p>

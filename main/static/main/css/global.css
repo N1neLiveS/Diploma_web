@@ -18,7 +18,9 @@ aside {
     color: #fff;
     border-right: 1px solid #FFC328;
     overflow-y: auto;
+    z-index: 10;
 }
+
 
 aside aside_box_logo {
     position: relative;
@@ -81,11 +83,21 @@ aside a {
     text-decoration: none;
 }
 
+#sidebar-toggle-container {
+  display: none;  /* Скрываем контейнер по умолчанию */
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
 main {
     flex: 1;
     margin-left: 12%; /* Отступ слева, чтобы main не заходил на aside */
     overflow-y: auto;
-    box-sizing: border-box; /* Учитываем padding в ширине */
+    box-sizing: border-box;/* Учитываем padding в ширине */
+    transition: margin-left 0.3s ease;
+    width: 88%;
 }
 
 
@@ -101,4 +113,32 @@ footer {
     box-sizing: border-box;
     width: auto;
 
+}
+
+
+
+/* Media Query для экранов меньше 768px */
+@media (max-width: 768px) {
+  aside {
+    display: none;  /* Скрываем боковое меню на маленьких экранах */
+    width: 100%;
+  }
+
+    #sidebar-toggle-container {
+        display: block; /* Показываем контейнер на маленьких экранах */
+  }
+    main {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    /* Когда меню открыто на мобильных */
+    aside.active {
+        display: block;
+    }
+
+    /* Сдвигаем основной контент при открытом меню */
+    body.menu-open main {
+        margin-left: 100%;
+    }
 }

@@ -9,7 +9,7 @@ import json
 @receiver(post_save, sender=User)
 def create_or_update_profile(sender, instance, created, **kwargs):
     """Создает профиль пользователя и инициализирует темы Python."""
-    if created:  # Создаем профиль только при создании пользователя
+    if created:  # Создаётся профиль только при создании пользователя
         Profile.objects.create(user=instance)
         # Инициализируем темы Python
         profile = instance.profile

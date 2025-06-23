@@ -40,7 +40,7 @@
                     </div>
 
                     <h2>{{ article.title }}</h2>   <!-- Заголовок поста -->
-                    <p>{{ article.content|slice:":225"|title|striptags }}</p> <!-- Ограничение на вывод символов в 225 -->
+                    <p>{{ article.content|slice:":225"|striptags }}</p> <!-- Ограничение на вывод символов в 225 -->
                     <div class="article-footer">
                         <div>{{ article.created_at|date:"d.m.Y H:i" }}</div>   <!-- Датта создания поста -->
                         <div>Просмотры: {{ article.views }}</div>  <!-- Просмотры -->
